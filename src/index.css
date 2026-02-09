@@ -2,59 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 @layer base {
   :root {
-    --background: 240 20% 4%;
-    --foreground: 210 20% 95%;
+    --background: 40 30% 97%;
+    --foreground: 230 25% 12%;
 
-    --card: 240 15% 8%;
-    --card-foreground: 210 20% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 12%;
 
-    --popover: 240 15% 8%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 12%;
 
-    --primary: 175 85% 50%;
-    --primary-foreground: 240 20% 4%;
+    --primary: 12 90% 62%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 260 60% 55%;
-    --secondary-foreground: 210 20% 95%;
+    --secondary: 220 85% 58%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 15% 14%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 40 20% 93%;
+    --muted-foreground: 230 10% 45%;
 
-    --accent: 175 85% 50%;
-    --accent-foreground: 240 20% 4%;
+    --accent: 75 70% 50%;
+    --accent-foreground: 230 25% 12%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 20% 95%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 10% 16%;
-    --input: 240 10% 16%;
-    --ring: 175 85% 50%;
+    --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 12 90% 62%;
 
-    --radius: 0.75rem;
-
-    --sidebar-background: 240 15% 6%;
-    --sidebar-foreground: 210 20% 95%;
-    --sidebar-primary: 175 85% 50%;
-    --sidebar-primary-foreground: 240 20% 4%;
-    --sidebar-accent: 240 15% 12%;
-    --sidebar-accent-foreground: 210 20% 95%;
-    --sidebar-border: 240 10% 16%;
-    --sidebar-ring: 175 85% 50%;
+    --radius: 1rem;
 
     /* Custom tokens */
-    --glow: 175 85% 50%;
-    --glow-secondary: 260 60% 55%;
-    --glass: 240 15% 12%;
-    --glass-border: 240 10% 20%;
-    --gradient-primary: linear-gradient(135deg, hsl(175 85% 50%), hsl(200 90% 55%));
-    --gradient-accent: linear-gradient(135deg, hsl(260 60% 55%), hsl(300 70% 50%));
-    --gradient-hero: linear-gradient(180deg, hsl(240 20% 4%) 0%, hsl(240 25% 8%) 100%);
-    --shadow-glow: 0 0 30px -5px hsl(175 85% 50% / 0.3);
-    --shadow-glow-lg: 0 0 60px -10px hsl(175 85% 50% / 0.4);
+    --coral: 12 90% 62%;
+    --ocean: 220 85% 58%;
+    --lime: 75 70% 50%;
+    --peach: 20 100% 94%;
+    --sky: 210 100% 95%;
+    --mint: 160 50% 93%;
+    --lavender: 260 60% 95%;
+
+    --shadow-soft: 0 4px 30px -4px hsl(230 25% 12% / 0.08);
+    --shadow-card: 0 8px 40px -8px hsl(230 25% 12% / 0.1);
+    --shadow-elevated: 0 20px 60px -15px hsl(230 25% 12% / 0.15);
+    --shadow-coral: 0 10px 40px -8px hsl(12 90% 62% / 0.3);
+    --shadow-ocean: 0 10px 40px -8px hsl(220 85% 58% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 230 25% 12%;
+    --sidebar-primary: 12 90% 62%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 20% 93%;
+    --sidebar-accent-foreground: 230 25% 12%;
+    --sidebar-border: 40 15% 88%;
+    --sidebar-ring: 12 90% 62%;
   }
 }
 
@@ -70,94 +74,140 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-glass/50 backdrop-blur-xl border border-glass-border rounded-2xl;
+  /* Unique blob shapes */
+  .blob-shape {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
 
-  .glass-nav {
-    @apply bg-glass/60 backdrop-blur-2xl border border-glass-border;
+  .blob-shape-2 {
+    border-radius: 30% 70% 60% 40% / 50% 60% 40% 50%;
   }
 
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-cyan-400;
+  .blob-shape-3 {
+    border-radius: 50% 50% 30% 70% / 40% 60% 40% 60%;
   }
 
-  .text-gradient-accent {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary to-fuchsia-500;
+  /* Wavy section dividers */
+  .wave-top {
+    clip-path: ellipse(80% 60% at 50% 100%);
   }
 
-  .glow-border {
-    @apply relative;
-    box-shadow: var(--shadow-glow);
+  .wave-bottom {
+    clip-path: ellipse(80% 60% at 50% 0%);
   }
 
-  .glow-text {
-    text-shadow: 0 0 40px hsl(175 85% 50% / 0.5);
+  .diagonal-cut {
+    clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0% 100%);
   }
 
-  .hover-glow {
-    @apply transition-all duration-500;
-  }
-  .hover-glow:hover {
-    box-shadow: var(--shadow-glow-lg);
+  .diagonal-cut-reverse {
+    clip-path: polygon(0 0%, 100% 5%, 100% 100%, 0% 95%);
   }
 
+  /* Card styles */
+  .card-elevated {
+    @apply bg-card rounded-3xl border border-border;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-coral {
+    @apply bg-peach rounded-3xl border-none;
+  }
+
+  .card-sky {
+    @apply bg-sky rounded-3xl border-none;
+  }
+
+  .card-mint {
+    @apply bg-mint rounded-3xl border-none;
+  }
+
+  .card-lavender {
+    @apply bg-lavender rounded-3xl border-none;
+  }
+
+  /* Text gradients */
+  .text-gradient-coral {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(12 90% 62%), hsl(340 80% 55%));
+  }
+
+  .text-gradient-ocean {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(220 85% 58%), hsl(260 70% 60%));
+  }
+
+  .text-gradient-multi {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(12 90% 62%), hsl(220 85% 58%), hsl(75 70% 50%));
+  }
+
+  /* Pill badge */
+  .pill-badge {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold;
+  }
+
+  /* Section spacing */
   .section-padding {
     @apply py-24 md:py-32 px-6 md:px-12 lg:px-20;
   }
 
-  .dot-pattern {
-    background-image: radial-gradient(circle, hsl(175 85% 50% / 0.08) 1px, transparent 1px);
-    background-size: 30px 30px;
+  /* Marquee */
+  .marquee-track {
+    animation: marquee 30s linear infinite;
   }
 
-  .grid-pattern {
-    background-image: 
-      linear-gradient(hsl(240 10% 16% / 0.5) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(240 10% 16% / 0.5) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-}
-
-@layer utilities {
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  /* Floating animation */
+  .float-slow {
+    animation: float-slow 8s ease-in-out infinite;
   }
 
-  .animate-pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite;
+  .float-medium {
+    animation: float-medium 6s ease-in-out infinite;
   }
 
-  .animate-slide-up {
-    animation: slide-up 0.8s ease-out;
+  .float-fast {
+    animation: float-fast 4s ease-in-out infinite;
   }
 
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient-shift 4s ease infinite;
+  .spin-slow {
+    animation: spin-slow 20s linear infinite;
   }
 }
 
-@keyframes float {
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(3deg); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-2deg); }
+}
+
+@keyframes float-fast {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-10px); }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px -5px hsl(175 85% 50% / 0.3); }
-  50% { box-shadow: 0 0 40px -5px hsl(175 85% 50% / 0.6); }
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
