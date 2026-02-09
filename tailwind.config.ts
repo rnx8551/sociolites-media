@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Syne", "sans-serif"],
-        body: ["Space Grotesk", "sans-serif"],
+        display: ["Outfit", "sans-serif"],
+        body: ["Plus Jakarta Sans", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,14 +51,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        glass: {
-          DEFAULT: "hsl(var(--glass))",
-          border: "hsl(var(--glass-border))",
-        },
-        glow: {
-          DEFAULT: "hsl(var(--glow))",
-          secondary: "hsl(var(--glow-secondary))",
-        },
+        coral: "hsl(var(--coral))",
+        ocean: "hsl(var(--ocean))",
+        lime: "hsl(var(--lime))",
+        peach: "hsl(var(--peach))",
+        sky: "hsl(var(--sky))",
+        mint: "hsl(var(--mint))",
+        lavender: "hsl(var(--lavender))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
