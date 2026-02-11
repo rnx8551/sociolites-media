@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CTASection = () => {
   const ref = useRef(null);
@@ -27,24 +28,27 @@ const CTASection = () => {
           <span className="text-5xl block mb-6">🚀</span>
 
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-extrabold text-background tracking-tight">
-            Ready to Go{" "}
-            <span className="text-gradient-coral">Viral?</span>
+            Ready to Go <span className="text-gradient-coral">Viral?</span>
           </h2>
           <p className="text-background/60 mt-4 text-lg max-w-lg mx-auto">
-            Book a free 30-minute strategy call. Let's map out your path to digital domination.
+            Book a free 30-minute strategy call. Let's map out your path to
+            digital domination.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="mailto:hello@sociolites.com"
+            <Link
+              to="/contact"
               className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground font-bold text-lg hover:scale-105 hover:shadow-[var(--shadow-coral)] transition-all duration-300"
             >
               <Mail size={20} />
               Book a Free Call
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </a>
+              <ArrowRight
+                size={20}
+                className="group-hover:translate-x-1 transition-transform"
+              />
+            </Link>
             <a
-              href="tel:+1234567890"
+              href="tel:+15551234567"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-background/20 text-background font-bold text-lg hover:bg-background/10 transition-all duration-300"
             >
               <Phone size={20} />
@@ -55,11 +59,14 @@ const CTASection = () => {
           {/* Contact info pills */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             {[
-              { icon: Mail, text: "hello@sociolites.com" },
-              { icon: Phone, text: "+1 (234) 567-890" },
-              { icon: MapPin, text: "New York, NY" },
+              { icon: Mail, text: "hello@sociolites.io" },
+              { icon: Phone, text: "+1 (555) 123-4567" },
+              { icon: MapPin, text: "New York, USA" },
             ].map((item) => (
-              <div key={item.text} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background/10 text-background/70 text-sm">
+              <div
+                key={item.text}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background/10 text-background/70 text-sm"
+              >
                 <item.icon size={14} />
                 {item.text}
               </div>

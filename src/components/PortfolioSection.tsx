@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
@@ -53,19 +54,21 @@ const PortfolioSection = () => {
             className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6"
           >
             <div>
-              <span className="pill-badge bg-primary/20 text-primary mb-4">🔥 Our Work</span>
+              <span className="pill-badge bg-primary/20 text-primary mb-4">
+                🔥 Our Work
+              </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-background tracking-tight mt-4">
                 Projects That <br />
                 <span className="text-gradient-coral">Speak Loud</span>
               </h2>
             </div>
-            <a
-              href="#contact"
+            <Link
+              to="/portfolio"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-background/20 text-background font-bold hover:bg-background/10 transition-colors self-start md:self-auto"
             >
               View All Projects
               <ArrowUpRight size={18} />
-            </a>
+            </Link>
           </motion.div>
 
           {/* Asymmetric portfolio grid */}
@@ -77,13 +80,18 @@ const PortfolioSection = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.12 }}
                 className={`group relative rounded-3xl overflow-hidden cursor-pointer ${
-                  i === 0 ? "md:col-span-7 md:row-span-2" :
-                  i === 1 ? "md:col-span-5" :
-                  i === 2 ? "md:col-span-5" :
-                  "md:col-span-12"
+                  i === 0
+                    ? "md:col-span-7 md:row-span-2"
+                    : i === 1
+                      ? "md:col-span-5"
+                      : i === 2
+                        ? "md:col-span-5"
+                        : "md:col-span-12"
                 }`}
               >
-                <div className={`${i === 0 ? "aspect-[4/5] md:aspect-auto md:h-full" : i === 3 ? "aspect-[16/7]" : "aspect-square"} overflow-hidden`}>
+                <div
+                  className={`${i === 0 ? "aspect-[4/5] md:aspect-auto md:h-full" : i === 3 ? "aspect-[16/7]" : "aspect-square"} overflow-hidden`}
+                >
                   <img
                     src={project.image}
                     alt={project.title}
@@ -93,11 +101,17 @@ const PortfolioSection = () => {
 
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 md:p-8">
-                  <div className={`pill-badge ${project.color} text-primary-foreground text-xs w-fit mb-3`}>
+                  <div
+                    className={`pill-badge ${project.color} text-primary-foreground text-xs w-fit mb-3`}
+                  >
                     {project.category}
                   </div>
-                  <h3 className="text-2xl font-display font-bold text-background">{project.title}</h3>
-                  <p className="text-background/70 text-sm mt-1 font-medium">{project.result}</p>
+                  <h3 className="text-2xl font-display font-bold text-background">
+                    {project.title}
+                  </h3>
+                  <p className="text-background/70 text-sm mt-1 font-medium">
+                    {project.result}
+                  </p>
                 </div>
 
                 {/* Arrow button */}

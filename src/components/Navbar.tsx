@@ -1,24 +1,28 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const isActive = (href: string) => location.pathname === href;
 
   return (
     <motion.nav
@@ -35,36 +39,42 @@ const Navbar = () => {
         }`}
       >
         {/* Logo - unique pill shape */}
-        <a href="#home" className="flex items-center gap-2.5">
+        <Link to="/" className="flex items-center gap-2.5">
           <div className="relative w-10 h-10">
             <div className="absolute inset-0 bg-primary blob-shape" />
-            <span className="absolute inset-0 flex items-center justify-center text-primary-foreground font-display font-extrabold text-lg">S</span>
+            <span className="absolute inset-0 flex items-center justify-center text-primary-foreground font-display font-extrabold text-lg">
+              S
+            </span>
           </div>
           <span className="font-display font-bold text-xl text-foreground tracking-tight">
             Sociolites
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Links - pill-shaped hover */}
         <div className="hidden md:flex items-center gap-1 bg-muted/60 rounded-full px-2 py-1.5">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
-              className="px-4 py-2 rounded-full text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-card transition-all duration-300"
+              to={link.href}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                isActive(link.href)
+                  ? "text-foreground bg-card"
+                  : "text-muted-foreground hover:text-foreground hover:bg-card"
+              }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         {/* CTA - unique shape */}
-        <a
-          href="#contact"
+        <Link
+          to="/contact"
           className="hidden md:inline-flex px-6 py-2.5 rounded-full bg-primary text-primary-foreground font-bold text-sm hover:scale-105 hover:shadow-[var(--shadow-coral)] transition-all duration-300"
         >
           Let's Talk 🚀
-        </a>
+        </Link>
 
         {/* Mobile Toggle - coral blob */}
         <button
@@ -86,25 +96,32 @@ const Navbar = () => {
             className="max-w-6xl mx-auto mt-3 bg-card rounded-3xl p-6 shadow-[var(--shadow-elevated)] border border-border md:hidden"
           >
             {navLinks.map((link, i) => (
-              <motion.a
+              <motion.div
                 key={link.label}
-                href={link.href}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.06 }}
-                onClick={() => setIsOpen(false)}
-                className="block px-4 py-3.5 rounded-2xl text-foreground font-semibold text-lg hover:bg-peach transition-colors"
               >
-                {link.label}
-              </motion.a>
+                <Link
+                  to={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-3.5 rounded-2xl font-semibold text-lg transition-colors ${
+                    isActive(link.href)
+                      ? "bg-peach text-coral"
+                      : "text-foreground hover:bg-peach"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             ))}
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               onClick={() => setIsOpen(false)}
-              className="mt-3 block px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-bold text-center text-lg"
+              className="mt-3 block px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-bold text-center text-lg hover:scale-105 transition-transform"
             >
               Let's Talk 🚀
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

@@ -2,7 +2,14 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const logos = [
-  "Google", "Meta", "Spotify", "Shopify", "Stripe", "Notion", "Figma", "Slack",
+  "Google",
+  "Meta",
+  "Spotify",
+  "Shopify",
+  "Stripe",
+  "Notion",
+  "Figma",
+  "Slack",
 ];
 
 const MarqueeSection = () => {
@@ -10,7 +17,7 @@ const MarqueeSection = () => {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section className="py-16 overflow-hidden border-y border-border" ref={ref}>
+    <section className="py-5 overflow-hidden border-y border-border" ref={ref}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
