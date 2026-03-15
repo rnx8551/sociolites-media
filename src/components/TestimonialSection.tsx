@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -42,110 +42,133 @@ const TestimonialSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative py-10 overflow-hidden bg-background" ref={ref}>
-      {/* Decorative background shapes */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-coral/5 blob-shape float-slow opacity-50" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-ocean/5 blob-shape-2 float-medium opacity-40" />
-      <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-lime/5 blob-shape-3 float-fast opacity-30" />
+    <section
+      ref={ref}
+      aria-labelledby="testimonials-heading"
+      className="relative py-20 overflow-hidden bg-background"
+    >
+      {/* Background decoration */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-coral/5 blur-3xl rounded-full" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-ocean/5 blur-3xl rounded-full" />
+      </div>
 
-      <div className="relative z-10 w-full section-padding">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <motion.header
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
+            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+            Client Testimonials
+          </span>
+
+          <h2
+            id="testimonials-heading"
+            className="text-5xl md:text-6xl font-display font-extrabold mb-6"
           >
-            <div className="inline-block mb-4">
-              <span className="pill-badge bg-peach text-coral">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                Client Love
-              </span>
-            </div>
-            <h2 className="text-5xl md:text-6xl font-display font-extrabold mb-6">
-              What Our <span className="text-gradient-coral">Clients Say</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Don't just take our word for it. Hear from businesses we've
-              transformed.
-            </p>
-          </motion.div>
+            Trusted by <span className="text-gradient-coral">Growing Brands</span>
+          </h2>
 
-          {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.name}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative"
-              >
-                {/* Card with unique shape */}
-                <div className="relative bg-card rounded-3xl p-8 border border-border hover:border-primary/50 transition-all duration-300 h-full shadow-md hover:shadow-[var(--shadow-card)]">
-                  {/* Decorative accent */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl -z-10 group-hover:from-primary/20 transition-all" />
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Real feedback from real businesses that trusted Sociolites to scale
+            their growth.
+          </p>
+        </motion.header>
 
-                  {/* Rating stars */}
-                  <div className="flex gap-1 mb-6">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={18}
-                        className="fill-primary text-primary"
-                      />
-                    ))}
-                  </div>
+        {/* Testimonials */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {testimonials.map((t, index) => (
+            <motion.article
+              key={t.name}
+              itemScope
+              itemType="https://schema.org/Review"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative"
+            >
+              <div className="relative h-full rounded-3xl p-8 bg-card/90 backdrop-blur border border-border hover:border-primary/40 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1">
+                {/* Decorative quote */}
+                <Quote className="absolute -top-6 -left-4 w-14 h-14 text-primary/10" />
 
-                  {/* Quote */}
-                  <p className="text-foreground text-lg font-medium mb-8 leading-relaxed italic">
-                    "{testimonial.quote}"
-                  </p>
+                {/* Hidden SEO heading */}
+                <h3 className="sr-only">
+                  Review by {t.name}, {t.role}
+                </h3>
 
-                  {/* Author info */}
-                  <div className="flex items-center gap-4 pt-6 border-t border-border">
-                    {/* Avatar with gradient */}
-                    <div
-                      className={`w-14 h-14 rounded-full ${testimonial.image} flex-shrink-0 shadow-md`}
+                {/* Rating */}
+                <div
+                  className="flex gap-1 mb-6"
+                  itemProp="reviewRating"
+                  itemScope
+                  itemType="https://schema.org/Rating"
+                >
+                  {[...Array(t.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      size={18}
+                      className="fill-primary text-primary"
                     />
-                    <div>
-                      <h4 className="font-bold text-foreground">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        {testimonial.role}
-                      </p>
-                    </div>
-                  </div>
+                  ))}
+                  <meta itemProp="ratingValue" content="5" />
+                  <meta itemProp="bestRating" content="5" />
                 </div>
-              </motion.div>
-            ))}
-          </div>
 
-          {/* Stats below testimonials */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {[
-              { number: "4.9/5", label: "Average Rating" },
-              { number: "150+", label: "Happy Clients" },
-              { number: "98%", label: "Satisfaction Rate" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-4xl font-display font-bold text-gradient-coral mb-2">
-                  {stat.number}
-                </p>
-                <p className="text-muted-foreground font-semibold">
-                  {stat.label}
-                </p>
+                {/* Quote */}
+                <blockquote
+                  itemProp="reviewBody"
+                  className="text-base md:text-lg text-foreground leading-relaxed italic mb-8"
+                >
+                  “{t.quote}”
+                </blockquote>
+
+                {/* Author */}
+                <footer className="flex items-center gap-4 pt-6 border-t border-border">
+                  <div
+                    className={`w-14 h-14 rounded-full ${t.image} shadow-md`}
+                    aria-hidden
+                  />
+                  <div>
+                    <cite
+                      itemProp="author"
+                      className="not-italic font-bold text-foreground"
+                    >
+                      {t.name}
+                    </cite>
+                    <p className="text-sm text-muted-foreground">{t.role}</p>
+                  </div>
+                </footer>
               </div>
-            ))}
-          </motion.div>
+            </motion.article>
+          ))}
         </div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-10 text-center"
+        >
+          {[
+            { number: "4.9/5", label: "Average Client Rating" },
+            { number: "150+", label: "Businesses Scaled" },
+            { number: "98%", label: "Client Satisfaction" },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <p className="text-4xl font-display font-extrabold text-gradient-coral mb-2">
+                {stat.number}
+              </p>
+              <p className="text-muted-foreground font-medium">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

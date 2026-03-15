@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   TrendingUp,
@@ -11,111 +11,142 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+/* ----------------------------------
+   Motion config (mobile optimized)
+----------------------------------- */
+const useFadeUp = () => {
+  const reduce = useReducedMotion();
+  return {
+    initial: { opacity: 0, y: reduce ? 10 : 30 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: reduce ? 0.4 : 0.7, ease: "easeOut" },
+    viewport: { once: true, margin: "-80px" },
+  };
+};
+
 const Services = () => {
+  const fadeUp = useFadeUp();
+
   const services = [
     {
       icon: TrendingUp,
       title: "Social Media Management",
+      tag: "Authority & Engagement",
       description:
-        "Complete social media strategy and execution. We handle content creation, scheduling, engagement, and community management across all platforms.",
+        "We turn social platforms into predictable growth channels — not random posting calendars.",
       features: [
-        "Daily posting & scheduling",
-        "Audience engagement",
-        "Community management",
-        "Performance tracking",
+        "Strategic content planning",
+        "Community & DM management",
+        "Audience growth systems",
+        "Monthly performance insights",
       ],
       color: "bg-coral",
+      slug: "social-media-management",
     },
     {
       icon: Film,
       title: "Content Creation",
+      tag: "Brand Visibility",
       description:
-        "Scroll-stopping videos, reels, and posts that make your brand unmissable. Our creative team produces high-quality content optimized for every platform.",
+        "Scroll-stopping content engineered for attention, retention, and brand recall.",
       features: [
-        "Video production",
-        "Photography",
-        "Graphic design",
-        "Copywriting",
+        "Reels & short-form video",
+        "Creative direction",
+        "High-conversion hooks",
+        "Platform-native formats",
       ],
       color: "bg-ocean",
+      slug: "content-creation",
     },
     {
       icon: BarChart3,
       title: "Performance Marketing",
+      tag: "Revenue Systems",
       description:
-        "Data-driven marketing focused on measurable results and ROI. We optimize every campaign to drive conversions and maximize your marketing spend.",
+        "Paid media engineered for conversions, scalability, and measurable ROI.",
       features: [
-        "Campaign optimization",
-        "Real-time reporting",
-        "A/B testing",
-        "ROI analysis",
+        "High-intent funnels",
+        "Creative testing frameworks",
+        "Real-time dashboards",
+        "Profit-led optimization",
       ],
       color: "bg-lime",
+      slug: "performance-marketing",
     },
     {
       icon: Users,
       title: "Lead Generation",
+      tag: "Pipeline Growth",
       description:
-        "Strategic campaigns designed to attract and convert high-quality leads. We use targeted messaging and conversion optimization to fill your sales pipeline.",
+        "Systems that consistently attract, qualify, and convert high-intent leads.",
       features: [
-        "Lead capture strategies",
+        "Lead funnels",
+        "Landing pages",
         "Conversion optimization",
-        "Sales funnel design",
-        "Lead nurturing",
+        "CRM-ready handoff",
       ],
       color: "bg-secondary",
+      slug: "lead-generation",
     },
     {
       icon: Zap,
-      title: "CRM & Customer Management",
+      title: "CRM & Automation",
+      tag: "Retention & Scale",
       description:
-        "Implement and optimize CRM systems to streamline customer relationships. We help you manage interactions, automate workflows, and improve retention.",
+        "Automated follow-ups and lifecycle systems that increase LTV and retention.",
       features: [
-        "CRM setup & implementation",
-        "Workflow automation",
-        "Customer segmentation",
-        "Retention strategies",
+        "CRM setup",
+        "Automation workflows",
+        "Segmentation logic",
+        "Customer journey mapping",
       ],
       color: "bg-peach",
+      slug: "crm-automation",
     },
     {
       icon: MessageSquare,
       title: "Google & Meta Ads",
+      tag: "Paid Growth",
       description:
-        "Paid advertising campaigns on Google and Meta platforms. We optimize budgets and targeting to get maximum conversions at minimum cost.",
+        "Conversion-focused advertising across Google & Meta — optimized for efficiency.",
       features: [
-        "Google Ads",
-        "Meta ads",
-        "Budget optimization",
+        "Search & display ads",
+        "Meta campaigns",
         "Conversion tracking",
+        "Scaling playbooks",
       ],
       color: "bg-sky",
+      slug: "paid-ads",
     },
     {
       icon: TrendingUp,
       title: "SEO & Website Optimization",
+      tag: "Organic Growth",
       description:
-        "Comprehensive SEO strategy and website optimization roadmap. We improve search rankings, drive organic traffic, and enhance user experience.",
+        "SEO that drives qualified traffic and conversions — not vanity rankings.",
       features: [
-        "Keyword research",
-        "On-page SEO",
+        "Search intent mapping",
         "Technical SEO",
-        "Website optimization roadmap",
+        "On-page optimization",
+        "UX & CRO improvements",
       ],
       color: "bg-coral",
+      slug: "seo-optimization",
     },
     {
       icon: Film,
       title: "Influencer Partnerships",
+      tag: "Brand Trust",
       description:
-        "Strategic collaborations with the right influencers to amplify your reach. We manage relationships and campaigns end-to-end.",
+        "Authentic influencer collaborations that convert attention into demand.",
       features: [
-        "Influencer outreach",
-        "Campaign management",
-        "Performance tracking",
-        "Contract negotiation",
+        "Creator sourcing",
+        "Campaign execution",
+        "Content coordination",
+        "ROI tracking",
       ],
       color: "bg-ocean",
+      slug: "influencer-marketing",
     },
   ];
 
@@ -123,337 +154,138 @@ const Services = () => {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center pt-30 pb-30">
-        {/* Decorative blobs */}
-        <div className="absolute top-20 right-[10%] w-64 h-64 bg-peach blob-shape float-slow opacity-70" />
-        <div className="absolute top-40 left-[5%] w-40 h-40 bg-sky blob-shape-2 float-medium opacity-60" />
+      {/* SEO SCHEMA */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "Your Agency Name",
+          url: "https://yourdomain.com/services",
+          areaServed: "Worldwide",
+          serviceType: "Digital Marketing",
+        })}
+      </script>
 
-        <div className="relative z-10 w-full section-padding">
+      {/* HERO */}
+      <section className="relative min-h-[65vh] flex items-center">
+        <div className="absolute top-24 right-[8%] w-64 h-64 bg-peach blob-shape opacity-60" />
+        <div className="absolute top-40 left-[6%] w-40 h-40 bg-sky blob-shape-2 opacity-50" />
+
+        <div className="relative z-10 section-padding w-full">
           <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-6"
-            >
-              <div className="pill-badge bg-peach text-coral inline-block">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                Our Expertise
-              </div>
+            <motion.div {...fadeUp} className="mb-6">
+              <span className="pill-badge bg-peach text-coral inline-flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-primary" />
+                Services
+              </span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl sm:text-6xl font-display font-extrabold leading-tight mb-6"
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: 0.05 }}
+              className="text-5xl sm:text-6xl font-display font-extrabold mb-6"
             >
-              Services That{" "}
-              <span className="text-gradient-coral">Deliver Results</span>
+              Growth Systems for{" "}
+              <span className="text-gradient-coral">Ambitious Brands</span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: 0.1 }}
               className="text-lg text-muted-foreground max-w-2xl"
             >
-              Comprehensive digital marketing solutions designed to elevate your
-              brand and drive meaningful growth across all platforms.
+              We design, execute, and scale digital marketing systems focused on
+              revenue — not vanity metrics.
             </motion.p>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="relative bg-background">
-        <div className="relative z-10 w-full section-padding">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-20"
-            >
-              <h2 className="text-4xl sm:text-5xl font-display font-bold mb-6">
-                Full-Spectrum Digital Marketing
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Everything your brand needs to dominate online
-              </p>
-            </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => {
-                const Icon = service.icon;
-                return (
-                  <motion.div
-                    key={service.title}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.12 }}
-                    viewport={{ once: true }}
-                    className="group relative"
-                  >
-                    {/* Background decorative gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+      {/* SERVICES GRID */}
+      <section className="section-padding">
+        <div className="max-w-6xl mx-auto">
+          <motion.div {...fadeUp} className="text-center mb-20">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold mb-6">
+              What We Help You Win At
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Modular services designed to scale together
+            </p>
+          </motion.div>
 
-                    <motion.div
-                      whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                      className="card-elevated p-8 hover:shadow-[var(--shadow-elevated)] transition-all duration-300 border-2 border-transparent hover:border-primary/30 relative overflow-hidden h-full"
-                    >
-                      {/* Decorative corner accent */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{
-                          duration: 0.6,
-                          delay: index * 0.12 + 0.3,
-                        }}
-                        viewport={{ once: true }}
-                        className={`absolute top-0 right-0 w-24 h-24 ${service.color} opacity-10 blob-shape-3`}
-                      />
-
-                      {/* Icon with enhanced styling */}
-                      <motion.div
-                        className="relative mb-6"
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        transition={{
-                          duration: 0.5,
-                          delay: index * 0.12 + 0.1,
-                        }}
-                        viewport={{ once: true }}
-                      >
-                        <motion.div
-                          className={`w-20 h-20 rounded-2xl ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}
-                          whileHover={{ rotate: 10, scale: 1.15 }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 400,
-                            damping: 10,
-                          }}
-                        >
-                          <Icon size={40} className="text-white" />
-                        </motion.div>
-                        <motion.div
-                          className={`absolute -bottom-2 -right-2 w-6 h-6 ${service.color} rounded-full opacity-60`}
-                        />
-                      </motion.div>
-
-                      <motion.h3
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{
-                          duration: 0.5,
-                          delay: index * 0.12 + 0.2,
-                        }}
-                        viewport={{ once: true }}
-                        className="text-2xl font-bold mb-3 font-display group-hover:text-primary transition-colors"
-                      >
-                        {service.title}
-                      </motion.h3>
-                      <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{
-                          duration: 0.5,
-                          delay: index * 0.12 + 0.3,
-                        }}
-                        viewport={{ once: true }}
-                        className="text-muted-foreground mb-6 leading-relaxed"
-                      >
-                        {service.description}
-                      </motion.p>
-
-                      <motion.ul
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{
-                          duration: 0.5,
-                          delay: index * 0.12 + 0.4,
-                        }}
-                        viewport={{ once: true }}
-                        className="space-y-3 mb-8"
-                      >
-                        {service.features.map((feature, featureIndex) => (
-                          <motion.li
-                            key={feature}
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{
-                              duration: 0.3,
-                              delay: index * 0.12 + 0.5 + featureIndex * 0.05,
-                            }}
-                            viewport={{ once: true }}
-                            className="flex items-center gap-3 text-sm font-medium"
-                          >
-                            <span
-                              className={`w-2 h-2 rounded-full ${service.color}`}
-                            />
-                            {feature}
-                          </motion.li>
-                        ))}
-                      </motion.ul>
-
-                      <motion.button
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{
-                          duration: 0.5,
-                          delay: index * 0.12 + 0.6,
-                        }}
-                        viewport={{ once: true }}
-                        whileHover={{ x: 4 }}
-                        className="inline-flex items-center gap-2 text-primary font-bold text-sm group/btn hover:gap-3 transition-all bg-gradient-to-r from-primary/10 to-transparent px-4 py-2 rounded-lg"
-                      >
-                        Learn More
-                        <ArrowRight
-                          size={16}
-                          className="group-hover/btn:translate-x-1 transition-transform"
-                        />
-                      </motion.button>
-                    </motion.div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="relative bg-card">
-        <div className="relative z-10 w-full section-padding">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl sm:text-5xl font-display font-bold mb-6">
-                Our Process
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                A proven methodology that ensures every campaign is strategic,
-                creative, and results-driven.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-              {/* Animated connection lines between steps */}
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent origin-left"
-              />
-              {[
-                {
-                  step: "01",
-                  title: "Discovery",
-                  desc: "We learn about your business, goals, and target audience.",
-                },
-                {
-                  step: "02",
-                  title: "Strategy",
-                  desc: "We develop a comprehensive plan tailored to your needs.",
-                },
-                {
-                  step: "03",
-                  title: "Execution",
-                  desc: "Our team brings the strategy to life with creative excellence.",
-                },
-                {
-                  step: "04",
-                  title: "Optimize",
-                  desc: "We monitor, measure, and continuously improve results.",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={item.step}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.a
+                  key={service.title}
+                  href={`/services/${service.slug}`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="text-center relative z-10"
+                  className="group block"
                 >
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 15,
-                      delay: index * 0.15 + 0.1,
-                    }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground font-bold text-2xl mb-4 shadow-lg"
-                  >
-                    {item.step}
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.15 + 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    <h3 className="font-display font-bold text-lg mb-2 transition-colors duration-300">
-                      {item.title}
+                  <div className="card-elevated p-8 h-full border border-border hover:border-primary/40 transition-all relative">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      {service.tag}
+                    </span>
+
+                    <div
+                      className={`w-16 h-16 rounded-2xl ${service.color} flex items-center justify-center my-6 shadow-lg`}
+                    >
+                      <Icon size={32} className="text-white" />
+                    </div>
+
+                    <h3 className="text-2xl font-display font-bold mb-3 group-hover:text-primary transition-colors">
+                      {service.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm transition-colors duration-300">
-                      {item.desc}
+
+                    <p className="text-muted-foreground mb-6">
+                      {service.description}
                     </p>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
+
+                    <ul className="space-y-2 mb-8 text-sm font-medium">
+                      {service.features.map((feature) => (
+                        <li key={feature} className="flex items-center gap-3">
+                          <span
+                            className={`w-2 h-2 rounded-full ${service.color}`}
+                          />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <span className="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-3 transition-all">
+                      Explore Service
+                      <ArrowRight size={16} />
+                    </span>
+                  </div>
+                </motion.a>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative ">
+      {/* CTA */}
+      <section className="section-padding text-center relative">
         <div className="absolute inset-0 bg-gradient-to-r from-coral/10 via-transparent to-ocean/10" />
-        <div className="relative z-10 w-full section-padding">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-4xl sm:text-5xl font-display font-bold mb-6"
-            >
-              Ready to transform your digital presence?
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-lg text-muted-foreground mb-8"
-            >
-              Let's discuss how our services can help your brand achieve its
-              goals.
-            </motion.p>
-            <motion.a
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              href="/contact"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground font-bold text-lg hover:scale-105 hover:shadow-[var(--shadow-coral)] transition-all duration-300"
-            >
-              Get Started
-              <ArrowRight size={20} />
-            </motion.a>
-          </div>
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <motion.h2 {...fadeUp} className="text-4xl sm:text-5xl font-display font-bold mb-6">
+            Let’s Build Your Growth Engine
+          </motion.h2>
+          <motion.p {...fadeUp} className="text-lg text-muted-foreground mb-8">
+            Book a free strategy call to see if we’re the right fit.
+          </motion.p>
+          <motion.a
+            {...fadeUp}
+            href="/contact"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground font-bold text-lg hover:scale-105 transition-transform"
+          >
+            Book Strategy Call
+            <ArrowRight size={20} />
+          </motion.a>
         </div>
       </section>
 

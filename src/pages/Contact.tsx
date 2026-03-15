@@ -1,486 +1,329 @@
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Mail, Phone, MapPin, Send, CheckCircle, Star } from "lucide-react";
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Contact = () => {
+  const prefersReducedMotion = useReducedMotion();
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
+    budget: "",
     message: "",
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Send email using mailto with form data
-    const emailBody = `Name: ${formData.name}%0AEmail: ${formData.email}%0ACompany: ${formData.company}%0A%0AMessage:%0A${formData.message}`;
-    const subject = "New Contact Form Submission";
-    window.location.href = `mailto:ashrivastava201819@gmail.com?subject=${subject}&body=${emailBody}`;
-    // Reset form
-    setFormData({ name: "", email: "", company: "", message: "" });
+    setIsSubmitting(true);
+
+    const body = `
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company}
+Budget: ${formData.budget}
+
+Message:
+${formData.message}
+`;
+
+    window.location.href = `mailto:ashrivastava201819@gmail.com?subject=New Contact Inquiry&body=${encodeURIComponent(
+      body
+    )}`;
+
+    setTimeout(() => {
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        budget: "",
+        message: "",
+      });
+      setIsSubmitting(false);
+    }, 500);
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email",
-      value: "ashrivastava201819@gmail.com",
-      href: "mailto:ashrivastava201819@gmail.com",
-      color: "bg-coral",
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      value: "+91 7020698446",
-      href: "tel:+917020698446",
-      color: "bg-ocean",
-    },
-    {
-      icon: MapPin,
-      title: "Location",
-      value: "Marartoli, Gondia, Maharashtra, India 441614",
-      href: "#",
-      color: "bg-lime",
-    },
-  ];
+  const fadeUp = prefersReducedMotion
+    ? {}
+    : { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 } };
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-background via-background/80 to-background overflow-x-hidden">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center pt-20 pb-20">
-        {/* Decorative blobs */}
-        <div className="absolute top-20 right-[10%] w-64 h-64 bg-peach blob-shape float-slow opacity-70" />
-        <div className="absolute top-40 left-[5%] w-40 h-40 bg-sky blob-shape-2 float-medium opacity-60" />
+      {/* HERO */}
+      <section className="relative pt-28 pb-32 section-padding bg-gradient-to-r from-coral/5 to-ocean/5">
+        <motion.h1
+          {...fadeUp}
+          transition={{ duration: 0.8 }}
+          className="text-5xl sm:text-6xl font-display font-extrabold max-w-4xl mx-auto text-center mb-6"
+        >
+          Let’s <span className="text-gradient-coral">grow your brand</span> with strategy and performance.
+        </motion.h1>
+        <motion.p
+          {...fadeUp}
+          transition={{ delay: 0.2 }}
+          className="text-lg text-muted-foreground max-w-2xl mx-auto text-center"
+        >
+          We combine strategy, content, and conversion-focused campaigns to scale your business.
+        </motion.p>
+      </section>
 
-        <div className="relative z-10 w-full section-padding">
-          <div className="max-w-6xl mx-auto">
+      {/* WHY CHOOSE US */}
+      <section className="section-padding max-w-6xl mx-auto">
+        <motion.h2
+          {...fadeUp}
+          className="text-3xl font-display font-bold text-center mb-12"
+        >
+          Why Choose Sociolites
+        </motion.h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            "Proven campaigns with 3.2x ROI",
+            "Dedicated strategy team",
+            "Transparent, no-pressure collaboration",
+          ].map((text, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-6"
+              key={i}
+              {...fadeUp}
+              transition={{ delay: 0.1 * i }}
+              className="card-elevated p-8 rounded-2xl text-center hover:shadow-lg transition"
             >
-              <div className="pill-badge bg-peach text-coral inline-block">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                Get In Touch
-              </div>
+              <Star className="mx-auto mb-4 text-coral" />
+              <p className="font-medium">{text}</p>
             </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl sm:text-6xl font-display font-extrabold leading-tight mb-6"
-            >
-              Let's Start a{" "}
-              <span className="text-gradient-coral">Conversation</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg text-muted-foreground max-w-2xl mb-12"
-            >
-              Have a project in mind? Let's discuss how Sociolites can help your
-              brand succeed. We're here to answer any questions you have.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="rounded-3xl overflow-hidden shadow-lg max-w-2xl"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop"
-                alt="Team collaboration"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Contact Info Cards */}
-      <section className="relative  bg-background">
-        {/* Decorative shapes */}
-        <div className="absolute top-0 left-[5%] w-72 h-72 bg-peach blob-shape opacity-20 float-slow" />
-        <div className="absolute bottom-0 right-[10%] w-96 h-96 bg-sky blob-shape-2 opacity-15 float-medium" />
-
-        <div className="relative z-10 w-full section-padding">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-20"
-            >
-              <h2 className="text-4xl sm:text-5xl font-display font-bold mb-6">
-                Get in Touch
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                We're always excited to discuss new projects and ideas
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-              {contactInfo.map((info, index) => {
-                const Icon = info.icon;
-                return (
-                  <motion.a
-                    key={info.title}
-                    href={info.href}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.12 }}
-                    viewport={{ once: true }}
-                    className="group relative"
-                  >
-                    {/* Background glow effect */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br from-${info.color}/10 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`}
-                    />
-
-                    <div className="card-elevated p-8 text-center hover:shadow-[var(--shadow-elevated)] transition-all duration-300 border-2 border-transparent hover:border-primary/30 relative overflow-hidden">
-                      {/* Decorative corner shapes */}
-                      <div
-                        className={`absolute top-0 right-0 w-20 h-20 ${info.color} opacity-10 rounded-full blob-shape`}
-                      />
-                      <div
-                        className={`absolute bottom-0 left-0 w-16 h-16 ${info.color} opacity-5 rounded-full blob-shape-2`}
-                      />
-
-                      {/* Icon */}
-                      <div className="relative mb-6">
-                        <div
-                          className={`w-20 h-20 rounded-2xl ${info.color} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg`}
-                        >
-                          <Icon size={40} className="text-white" />
-                        </div>
-                      </div>
-
-                      <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                        {info.title}
-                      </h3>
-                      <p className="text-muted-foreground group-hover:text-foreground transition-colors font-medium">
-                        {info.value}
-                      </p>
-                    </div>
-                  </motion.a>
-                );
-              })}
-            </div>
-          </div>
+      {/* TRUST STRIP */}
+      <section className="pb-16">
+        <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+          <span>⭐ 4.9/5 Client Satisfaction</span>
+          <span>🚀 120+ Campaigns Launched</span>
+          <span>📈 Avg 3.2× ROI</span>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="relative bg-card">
-        <div className="relative z-10 w-full section-padding">
-          <div className="max-w-3xl mx-auto">
-            <div className="card-elevated p-10 relative overflow-hidden">
-              {/* Decorative background shapes */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-coral/5 blob-shape-3 opacity-50" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-ocean/5 blob-shape opacity-40" />
+      {/* FORM CTA TEXT */}
+      <section className="pb-16">
+        <motion.div
+          {...fadeUp}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <p className="text-lg font-semibold">
+            Not sure where to start?
+          </p>
+          <p className="text-muted-foreground mt-2">
+            Fill out the form below to receive a <strong>custom growth roadmap</strong> for your business.
+          </p>
+        </motion.div>
+      </section>
 
-              <motion.form
-                onSubmit={handleSubmit}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="space-y-6 relative z-10"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Name */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-bold mb-3"
-                    >
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-2xl bg-muted border-2 border-border focus:border-primary focus:bg-background focus:outline-none transition-all"
-                      placeholder="Your name"
-                    />
-                  </motion.div>
+      {/* CONTACT FORM */}
+      <section className="relative bg-card section-padding">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-14 items-start">
+          {/* LEFT */}
+          <motion.div {...fadeUp} className="sticky top-28 space-y-6">
+            <span className="pill-badge bg-peach text-coral">Free Strategy Consultation</span>
+            <h2 className="text-4xl font-display font-bold leading-tight">
+              Let’s map your growth.<br />
+              <span className="text-gradient-coral">No guesswork. Just results.</span>
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Whether scaling ads, building brand authority, or optimizing conversions, this starts with clarity.
+            </p>
+            <ul className="space-y-3 text-sm font-medium">
+              <li>✅ Custom strategy review</li>
+              <li>✅ Clear growth roadmap</li>
+              <li>✅ Zero-pressure conversation</li>
+            </ul>
+            <p className="text-sm text-muted-foreground">⚡ Average response time: <strong>&lt; 24 hours</strong></p>
+          </motion.div>
 
-                  {/* Email */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.15 }}
-                    viewport={{ once: true }}
-                  >
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-bold mb-3"
-                    >
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-2xl bg-muted border-2 border-border focus:border-primary focus:bg-background focus:outline-none transition-all"
-                      placeholder="your@email.com"
-                    />
-                  </motion.div>
-                </div>
+          {/* FORM */}
+          <motion.form
+            {...fadeUp}
+            onSubmit={handleSubmit}
+            className="card-elevated p-8 md:p-10 space-y-8 relative overflow-hidden"
+          >
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-coral/10 blur-3xl rounded-full" />
 
-                {/* Company */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <label
-                    htmlFor="company"
-                    className="block text-sm font-bold mb-3"
-                  >
-                    Company / Brand
-                  </label>
+            {/* STEP 1 */}
+            <div className="space-y-5">
+              <p className="text-xs font-bold uppercase text-primary">Step 1 · About You</p>
+              <div className="grid md:grid-cols-2 gap-5">
+                <div className="input-wrapper">
                   <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-2xl bg-muted border-2 border-border focus:border-primary focus:bg-background focus:outline-none transition-all"
-                    placeholder="Your company name"
-                  />
-                </motion.div>
-
-                {/* Message */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.25 }}
-                  viewport={{ once: true }}
-                >
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-bold mb-3"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
+                    name="name"
+                    placeholder=" "
                     required
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-2xl bg-muted border-2 border-border focus:border-primary focus:bg-background focus:outline-none transition-all resize-none"
-                    placeholder="Tell us about your project, goals, and timeline..."
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="input-field"
                   />
-                </motion.div>
-
-                {/* Submit Button */}
-                <motion.button
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  className="w-full py-4 rounded-full bg-primary text-primary-foreground font-bold text-lg flex items-center justify-center gap-3 hover:shadow-[var(--shadow-coral)] transition-all duration-300"
-                >
-                  Send Message
-                  <Send size={20} />
-                </motion.button>
-              </motion.form>
+                  <label className="input-label">Full Name</label>
+                  <Mail size={18} className="input-icon" />
+                </div>
+                <div className="input-wrapper">
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder=" "
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="input-field"
+                  />
+                  <label className="input-label">Work Email</label>
+                  <Mail size={18} className="input-icon" />
+                </div>
+              </div>
+              <div className="input-wrapper">
+                <input
+                  name="company"
+                  placeholder=" "
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="input-field"
+                />
+                <label className="input-label">Company / Brand</label>
+              </div>
             </div>
-          </div>
+
+            {/* STEP 2 */}
+            <div className="space-y-5">
+              <p className="text-xs font-bold uppercase text-primary">Step 2 · Project Details</p>
+              <div className="input-wrapper">
+                <select
+                  name="budget"
+                  value={formData.budget}
+                  onChange={handleChange}
+                  className="input-field appearance-none"
+                >
+                  <option value="" disabled hidden />
+                  <option>₹25k – ₹50k</option>
+                  <option>₹50k – ₹1L</option>
+                  <option>₹1L – ₹3L</option>
+                  <option>₹3L+</option>
+                </select>
+                <label className="input-label">Monthly Budget</label>
+              </div>
+              <div className="input-wrapper">
+                <textarea
+                  name="message"
+                  placeholder=" "
+                  rows={4}
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="input-field resize-none"
+                />
+                <label className="input-label">What results are you aiming for?</label>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full py-4 rounded-full bg-primary text-primary-foreground
+              font-bold text-lg flex items-center justify-center gap-3 hover:scale-[1.02] transition disabled:opacity-60"
+            >
+              {isSubmitting ? "Sending…" : "Request Strategy Call"}
+              <Send size={18} />
+            </button>
+            <p className="text-xs text-muted-foreground text-center">🔒 Your details stay private. No spam.</p>
+          </motion.form>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      {/* <section className="relative  bg-card">
-        <div className="relative z-10 w-full section-padding">
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-20"
-            >
-              <h2 className="text-4xl sm:text-5xl font-display font-bold mb-6">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Can't find the answer you're looking for? Feel free to contact
-                us directly.
-              </p>
-            </motion.div>
-
-            <div className="space-y-4">
-              {[
-                {
-                  q: "What is your typical turnaround time for a project?",
-                  a: "Most projects take 4-8 weeks depending on scope. We'll provide a detailed timeline during our initial consultation.",
-                },
-                {
-                  q: "Do you work with small businesses or startups?",
-                  a: "Absolutely! We work with brands of all sizes. We have packages designed specifically for startups and SMBs.",
-                },
-                {
-                  q: "How do you measure success?",
-                  a: "We measure success through clear KPIs established before the project begins. This could be engagement, conversions, reach, or revenue growth.",
-                },
-                {
-                  q: "What platforms do you specialize in?",
-                  a: "We have expertise across all major platforms including Instagram, TikTok, Facebook, LinkedIn, YouTube, and emerging platforms.",
-                },
-                {
-                  q: "Can you help with influencer partnerships?",
-                  a: "Yes! We manage the entire influencer marketing process from identifying the right creators to campaign execution and reporting.",
-                },
-                {
-                  q: "What's included in your ongoing management services?",
-                  a: "Our ongoing services include strategy development, content creation, community management, analytics, and optimization.",
-                },
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                  className="card-elevated p-6"
-                >
-                  <h3 className="font-bold text-lg mb-3">{faq.q}</h3>
-                  <p className="text-muted-foreground">{faq.a}</p>
-                </motion.div>
-              ))}
-            </div>
+      {/* WHAT HAPPENS NEXT */}
+      <section className="section-padding bg-background">
+        <motion.div {...fadeUp} className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl font-display font-bold mb-12">What happens after you submit?</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              "We review your goals & challenges",
+              "You get a custom growth plan",
+              "We align on next steps — only if it makes sense",
+            ].map((text, i) => (
+              <div key={i} className="card-elevated p-6 hover:shadow-lg transition rounded-2xl">
+                <CheckCircle className="mx-auto mb-4 text-primary" />
+                <p className="font-medium">{text}</p>
+              </div>
+            ))}
           </div>
-        </div>
-      </section> */}
+        </motion.div>
+      </section>
 
-      {/* Response Time Banner */}
-      <section className="relative  bg-gradient-to-r from-coral/20 via-ocean/20 to-lime/20">
-        <div className="relative z-10 w-full section-padding">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+      {/* CONTACT CARDS */}
+      <section className="section-padding">
+        <div className="max-w-6xl mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              title: "Email Us",
+              value: "ashrivastava201819@gmail.com",
+              icon: <Mail size={22} />,
+              link: "mailto:ashrivastava201819@gmail.com",
+              color: "from-coral/10",
+              cta: "Send Email →",
+            },
+            {
+              title: "Call / WhatsApp",
+              value: "+91 70206 98446",
+              icon: <Phone size={22} />,
+              link: "tel:+917020698446",
+              color: "from-ocean/10",
+              cta: "Call Now →",
+            },
+            {
+              title: "Office Location",
+              value: "Gondia, Maharashtra",
+              icon: <MapPin size={22} />,
+              link: "#map",
+              color: "from-lime/10",
+              cta: "View on Map →",
+            },
+          ].map((item, i) => (
+            <motion.a
+              key={i}
+              href={item.link}
+              whileHover={{ y: -6 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="relative card-elevated p-8 rounded-3xl group overflow-hidden"
             >
-              <p className="text-sm font-bold text-primary mb-2">
-                Quick Response
-              </p>
-              <h3 className="text-2xl sm:text-3xl font-display font-bold mb-4">
-                We typically respond within 24 hours
-              </h3>
-              <p className="text-muted-foreground">
-                Whether you're ready to start or just exploring options, we're
-                excited to hear from you.
-              </p>
-            </motion.div>
-          </div>
+              <div className={`absolute inset-0 bg-gradient-to-br ${item.color} to-transparent opacity-0 group-hover:opacity-100 transition`} />
+              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} to-transparent text-white flex items-center justify-center mb-6`}>
+                {item.icon}
+              </div>
+              <h3 className="text-lg font-bold mb-1">{item.title}</h3>
+              <p className="text-xl font-display font-extrabold tracking-tight">{item.value}</p>
+              <span className="inline-block mt-5 text-sm font-semibold text-primary">{item.cta}</span>
+            </motion.a>
+          ))}
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="relative bg-background">
-        <div className="relative z-10 w-full section-padding">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-4xl sm:text-5xl font-display font-bold mb-6">
-                Visit Us
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Find us in the heart of Gondia, Maharashtra. We'd love to meet
-                you in person!
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="card-elevated overflow-hidden rounded-3xl h-96"
-            >
-              <iframe
-                title="Marartoli, Gondia, Maharashtra, India Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3727.8!2d80.1854!3d21.4635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sMarartoli%20Gondia%20441614!2sIndia!5e0!3m2!1sen!2s!4v1707654321098"
-                width="100%"
-                height="100%"
-                style={{ border: "none" }}
-                allowFullScreen={true}
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </motion.div>
-
-            {/* Office Details */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="mt-12 text-center"
-            >
-              <h3 className="text-2xl font-display font-bold mb-2">
-                Sociolites Office
-              </h3>
-              <p className="text-lg text-muted-foreground">
-                Gondia, Maharashtra 441601
-              </p>
-              <p className="text-lg text-muted-foreground mb-6">India</p>
-              <a
-                href="https://www.google.com/maps/search/Gondia+Maharashtra+India"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold hover:scale-105 transition-transform"
-              >
-                <MapPin size={18} />
-                View on Maps
-              </a>
-            </motion.div>
-          </div>
+      {/* MAP */}
+      <section id="map" className="section-padding">
+        <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden card-elevated h-96">
+          <iframe
+            loading="lazy"
+            title="Sociolites Location"
+            src="https://www.google.com/maps?q=Gondia%20Maharashtra&output=embed"
+            className="w-full h-full border-0"
+          />
         </div>
       </section>
 
