@@ -4,32 +4,32 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Alex Morgan",
-    role: "CEO, TechStart",
+    name: "Ar. Sandeep Baghele",
+    role: "Architect",
     image: "bg-gradient-to-br from-coral to-pink-500",
     quote:
       "Sociolites transformed our social media presence. Our engagement went up 340% in just 3 months!",
     rating: 5,
   },
   {
-    name: "Sarah Chen",
-    role: "Founder, FashionFlow",
+    name: "Anurag Agrawal",
+    role: "Backery Owner",
     image: "bg-gradient-to-br from-ocean to-cyan-500",
     quote:
       "The team is incredibly creative and data-driven. They understand our brand and deliver results.",
     rating: 5,
   },
   {
-    name: "Marcus Williams",
-    role: "Marketing Director, GlobalBrand",
+    name: "Dr. Nitin Shrivastava",
+    role: "Dentist",
     image: "bg-gradient-to-br from-lime to-green-500",
     quote:
       "Best investment we made in our marketing. Sociolites consistently exceeds expectations.",
     rating: 5,
   },
   {
-    name: "Emma Rodriguez",
-    role: "Owner, WellnessHub",
+    name: "Encee Manoj",
+    role: "Anchor",
     image: "bg-gradient-to-br from-lavender to-purple-500",
     quote:
       "Professional, responsive, and results-oriented. Highly recommend Sociolites to any business.",
@@ -156,7 +156,7 @@ const TestimonialSection = () => {
         >
           {[
             { number: "4.9/5", label: "Average Client Rating" },
-            { number: "150+", label: "Businesses Scaled" },
+            { number: "30+", label: "Businesses Scaled" },
             { number: "98%", label: "Client Satisfaction" },
           ].map((stat) => (
             <div key={stat.label}>

@@ -7,6 +7,7 @@ import {
   Rocket,
   Laptop,
   GraduationCap,
+  Diamond,
 } from "lucide-react";
 
 const industries = [
@@ -39,10 +40,10 @@ const industries = [
     gradient: "from-lavender to-purple-500",
   },
   {
-    icon: Laptop,
-    title: "Tech & IT Services",
+    icon: Diamond,
+    title: "Jewellery Brands",
     description:
-      "Positioning complex solutions clearly to convert decision-makers.",
+      "We position your brand as premium and desirable. Our content builds emotional connection that turns viewers into confident buyers.",
     gradient: "from-amber-400 to-orange-500",
   },
   {
@@ -77,7 +78,7 @@ const IndustriesSection = () => {
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-foreground tracking-tight mt-4">
             Industries We{" "}
-            <span className="text-gradient-coral">Dominate</span>
+            <span className="text-gradient-coral">Support</span>
           </h2>
           <p className="text-muted-foreground mt-6 text-lg max-w-2xl mx-auto">
             We don’t believe in one-size-fits-all marketing. Every industry

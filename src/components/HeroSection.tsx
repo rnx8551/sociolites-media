@@ -135,7 +135,7 @@ const HeroSection = () => {
                 ))}
               </div>
               <div>
-                <div className="font-bold text-sm">Trusted by 200+ Brands</div>
+                <div className="font-bold text-sm">Trusted by 30+ Brands</div>
                 <div className="text-muted-foreground text-xs">
                   ⭐⭐⭐⭐⭐ Rated 4.9/5 by clients
                 </div>

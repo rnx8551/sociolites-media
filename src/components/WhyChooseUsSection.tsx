@@ -10,30 +10,30 @@ import {
 const reasons = [
   {
     icon: Sparkles,
-    title: "Creative That Converts",
+    title: "Performance-Driven Creativity",
     description:
-      "We don’t design for likes — we design for action, engagement, and revenue.",
+      "We blend creative storytelling with performance strategy — so every campaign doesn’t just look good, it converts.",
     bg: "bg-peach",
   },
   {
     icon: TrendingUp,
-    title: "Performance Obsessed",
+    title: "ROI-Focused Execution",
     description:
-      "Every campaign is tracked, tested, and optimized with ruthless focus on ROI.",
+      "Every decision is backed by numbers. We continuously test, analyze, and optimize to maximize returns on every rupee spent.",
     bg: "bg-sky",
   },
   {
     icon: ShieldCheck,
-    title: "Radical Transparency",
+    title: "⁠Complete Transparency",
     description:
-      "No fluff reports. No hidden metrics. Just clear insights and honest results.",
+      "No confusing reports, no hidden metrics. Just clear communication, honest insights, and measurable progress.",
     bg: "bg-mint",
   },
   {
     icon: Zap,
-    title: "Speed & Agility",
+    title: "Fast, Adaptive, Market-Ready",
     description:
-      "We move fast, adapt faster, and capitalize on trends before they peak.",
+      "Digital moves fast — and so do we. We adapt quickly to trends, algorithm shifts, and consumer behavior.",
     bg: "bg-lavender",
   },
 ];
@@ -61,15 +61,15 @@ const WhyChooseUsSection = () => {
             </span>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-foreground tracking-tight mt-4">
-              Not Another Agency.  
+              Sociolites Earns Trust  
               <span className="text-gradient-coral block">
-                A Growth Machine.
+                & Delivers Results
               </span>
             </h2>
 
             <p className="text-muted-foreground mt-6 text-lg leading-relaxed max-w-xl">
-              Anyone can run ads or post content. We build systems that attract,
-              convert, and retain customers — predictably and profitably.
+              We don’t just run campaigns — we build partnerships.
+Every strategy we create is backed by data, driven by intent, and designed to deliver consistent, scalable growth.
             </p>
 
             <ul className="mt-8 space-y-4">

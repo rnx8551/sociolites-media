@@ -14,62 +14,82 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: "FashionFlow – Campaign Rebrand",
-      category: "Social Strategy",
+      title: "AR Sandeep Baghele & Associates – Brand Visibility & Lead Growth",
+      category: "Architecture / Design Marketing",
       image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&fit=crop",
+        "https://www.re-thinkingthefuture.com/wp-content/uploads/2022/09/A7986-Marketing-in-Architecture-10-Tips-you-should-follow-Image-1.jpg",
       stats: [
-        { label: "Followers Growth", value: "340%" },
-        { label: "Engagement Rate", value: "8.5%" },
-        { label: "Revenue Lift", value: "230%" },
+        { label: "Increase in Online Enquiries", value: "2x" },
+        { label: "Lead Flow Generated", value: "Consistent" },
+        { label: "Brand Visibility in Local Market", value: "Improved" },
       ],
       description:
-        "A complete brand and content repositioning designed to increase authority, engagement, and revenue across TikTok and Instagram.",
+        "We worked on improving digital presence and local visibility for AR Sandeep Baghele & Associates through structured content and targeted campaigns.",
       results: [
         "Brand repositioning",
-        "Viral content systems",
-        "Influencer seeding",
-        "Paid amplification",
+        "Social Media Strategy",
+        "Local Marketing",
+        "Lead Generation",
       ],
     },
     {
       id: 2,
-      title: "TechStart – SaaS Product Launch",
-      category: "Paid Advertising",
+      title: "Local Real Estate Project – Lead Generation Campaign",
+      category: "Real Estate Marketing",
       image:
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&fit=crop",
+        "https://blog.skyad.com/hubfs/RE%20Digital%20marketing%20blog%20post.jpg",
       stats: [
-        { label: "ROAS", value: "7.2x" },
-        { label: "Conversion Rate", value: "12.3%" },
-        { label: "CPA Reduction", value: "−67%" },
+        { label: " Leads Generated", value: "120+" },
+        { label: "Conversion Rate", value: "3.5%" },
+        { label: "Cost Per Lead Reduction", value: "40%" },
       ],
       description:
-        "Performance-driven paid acquisition across Google, Meta, and LinkedIn targeting decision-makers and founders.",
+        "We created a targeted ad strategy and local marketing funnel to generate quality enquiries for a real estate project.",
       results: [
-        "Audience research",
-        "Creative testing",
-        "Conversion tracking",
-        "Scaling frameworks",
+        "Audience Targeting",
+        "Meta Ads",
+        "Lead Funnel",
+        "Local Campaign",
       ],
     },
     {
       id: 3,
-      title: "FoodieHub – Community Growth",
-      category: "Community Management",
+      title: "Jewellery Brand – Instagram Growth & Engagement",
+      category: "Social Media Marketing",
       image:
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&fit=crop",
+        "https://cdn.dribbble.com/userupload/41509826/file/original-b51e65c5ae30ea0b3848b41e990d44ba.jpg?resize=2048x1448&vertical=center",
       stats: [
-        { label: "Community Size", value: "125K+" },
-        { label: "Daily Active Users", value: "15K" },
-        { label: "Retention Lift", value: "2.4x" },
+        { label: "Engagement Growth", value: "2.5x" },
+        { label: "Monthly Reach Increase", value: "3K+" },
+        { label: "Enquiries Generated", value: "Consistent" },
       ],
       description:
-        "Built an engaged brand-led community turning users into long-term advocates.",
+        "Built consistent content strategy and reel-based growth system to improve brand visibility and engagement.",
       results: [
-        "Content calendar",
-        "Engagement loops",
-        "Community challenges",
-        "Retention strategy",
+        "Content Strategy",
+        "Reels Growth",
+        "Brand Positioning",
+        "Organic Marketing",
+      ],
+    },
+    {
+      id: 4,
+      title: "Clinic Marketing – Patient Lead Generation",
+      category: "Performance Marketing",
+      image:
+        "https://ontimehealthcare.com/wp-content/uploads/2025/02/Healthcare-Digital-Marketing-Agency.jpg",
+      stats: [
+        { label: "Patient Leads", value: "80+" },
+        { label: "Increase in Appointments", value: "35%" },
+        { label: "Cost Per Lead", value: "Lower" },
+      ],
+      description:
+        "Designed location-based ad campaigns to attract nearby patients and increase appointment bookings.",
+      results: [
+        "Google Ads",
+        "Local Targeting",
+        "Conversion Optimization",
+        "Lead Generation",
       ],
     },
   ];

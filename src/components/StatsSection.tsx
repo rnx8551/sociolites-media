@@ -5,30 +5,30 @@ import { Award, Users, Target, Rocket } from "lucide-react";
 const stats = [
   {
     icon: Users,
-    value: "200+",
+    value: "30+",
     label: "Happy Clients",
-    sub: "Worldwide partnerships",
+    sub: "Serving businesses across multiple industries",
     bg: "card-coral",
   },
   {
     icon: Target,
-    value: "$5M+",
-    label: "Revenue Generated",
-    sub: "Tracked client ROI",
+    value: "150+",
+    label: "Lead-Focused Campaigns",
+    sub: "Strategies designed for enquiries, not just reach",
     bg: "card-sky",
   },
   {
     icon: Award,
     value: "50+",
-    label: "Industry Awards",
-    sub: "Across marketing & design",
+    label: "Client-Centric Approach",
+    sub: "Dedicated support and clear communication",
     bg: "card-mint",
   },
   {
     icon: Rocket,
     value: "98%",
-    label: "Client Retention",
-    sub: "Long-term partnerships",
+    label: "Growth-Oriented Execution",
+    sub: "Focused on long-term brand and business growth",
     bg: "card-lavender",
   },
 ];
@@ -89,7 +89,7 @@ const StatsSection = () => {
               <div className="bg-card rounded-3xl shadow-[var(--shadow-elevated)] p-8 w-3/4 text-center">
                 <div className="text-4xl mb-3">⚡</div>
                 <div className="text-2xl font-display font-extrabold text-foreground">
-                  Since 2018
+                  Since 2024
                 </div>
                 <p className="text-muted-foreground text-sm mt-2 leading-relaxed">
                   Helping brands grow predictably through strategy, creativity,
@@ -126,7 +126,7 @@ const StatsSection = () => {
 
             <p className="mt-4 text-sm text-muted-foreground">
               Average client partnership:{" "}
-              <strong className="text-foreground">2.4 years</strong>
+              <strong className="text-foreground">1.4 years</strong>
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">

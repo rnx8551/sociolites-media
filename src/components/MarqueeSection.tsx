@@ -4,7 +4,6 @@ import { useRef } from "react";
 const logos = [
   "Google",
   "Meta",
-  "Spotify",
   "Shopify",
   "Stripe",
   "Notion",

@@ -195,7 +195,7 @@ const Services = () => {
               className="text-lg text-muted-foreground max-w-2xl"
             >
               We design, execute, and scale digital marketing systems focused on
-              revenue — not vanity metrics.
+              revenue — not vanity metrics. 
             </motion.p>
           </div>
         </div>

@@ -71,7 +71,7 @@ const Footer = () => {
               </p>
 
               <p className="text-xs text-muted-foreground mt-3">
-                🌍 Serving clients worldwide
+                🌍 Serving clients in India
               </p>
 
               {/* Socials */}
@@ -137,9 +137,9 @@ const Footer = () => {
               <h4 className="font-display font-bold text-foreground mb-5 text-sm uppercase tracking-wider">
                 Stay Updated
               </h4>
-              <p className="text-muted-foreground text-sm mb-4">
+              {/* <p className="text-muted-foreground text-sm mb-4">
                 Join 5,000+ founders getting weekly growth hacks.
-              </p>
+              </p> */}
 
               <div className="flex gap-2">
                 <input
