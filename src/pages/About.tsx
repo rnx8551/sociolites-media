@@ -115,9 +115,9 @@ const About = () => {
         <div className="section-padding">
           <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { value: "6+", label: "Years in Market" },
+              { value: "2", label: "Years in Market" },
               { value: "150+", label: "Brands Scaled" },
-              { value: "2.5B+", label: "Impressions Generated" },
+              { value: "100+", label: "Impressions Generated" },
               { value: "94%", label: "Client Retention" },
             ].map((stat) => (
               <div key={stat.label}>
