@@ -169,152 +169,249 @@ const Services = () => {
         })}
       </script>
 
-      {/* Redesigned HERO - Services Theme */}
-      <header className="relative min-h-screen flex items-center overflow-hidden pt-14">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-slate-50/50 to-background/80" />
-        
-        {/* Decorative blobs */}
-        <div className="absolute top-32 right-[10%] w-72 h-72 bg-gradient-to-r from-peach to-coral blob-shape opacity-60 blur-xl animate-float" />
-        <div className="absolute top-52 left-[5%] w-52 h-52 bg-gradient-to-r from-sky to-ocean blob-shape-2 opacity-50 blur-lg animate-float delay-1000" />
-        <div className="absolute bottom-32 right-[20%] w-44 h-44 bg-lime/40 rounded-3xl opacity-60 blur-md animate-pulse" />
-        <div className="absolute bottom-52 left-[15%] w-32 h-32 bg-gradient-to-r from-mint to-lime rounded-full opacity-70 animate-bounce" />
+      {<header className="relative min-h-screen flex items-center overflow-hidden pt-14">
 
-        <div className="relative z-20 section-padding w-full">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left: Content */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-              className="lg:pr-12"
-            >
-              <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="mb-8">
-                <span className="pill-badge bg-gradient-to-r from-peach to-coral text-primary-foreground inline-flex items-center gap-2 shadow-lg">
-                  <Zap className="w-4 h-4" />
-                  Our Core Services
-                </span>
-              </motion.div>
+  {/* Background */}
+  <div className="absolute inset-0 bg-gradient-to-br from-background via-slate-50/50 to-background/80" />
 
-              <motion.h1
-                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-                className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold leading-[1.05] mb-6"
-              >
-                Comprehensive Services for{" "}
-                <br className="hidden lg:block" />
-                <span className="text-gradient-coral bg-clip-text relative inline-block">
-                  Media & Social Growth
-                  <svg className="absolute -bottom-4 left-0 w-full h-2" viewBox="0 0 200 12" fill="none">
-                    <path d="M0 8C40 2 100 10 160 4C190 1 200 6 200 6" stroke="hsl(12 90% 62%)" strokeWidth="2.5" strokeLinecap="round" opacity="0.8" />
-                  </svg>
-                </span>
-              </motion.h1>
+  {/* Glow blobs */}
+  <div className="absolute top-32 right-[10%] w-72 h-72 bg-gradient-to-r from-peach to-coral blob-shape opacity-60 blur-xl animate-float" />
+  <div className="absolute top-52 left-[5%] w-52 h-52 bg-gradient-to-r from-sky to-ocean blob-shape-2 opacity-50 blur-lg animate-float delay-1000" />
 
-              <motion.p
-                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-                className="text-xl text-muted-foreground max-w-lg mb-10 leading-relaxed"
-              >
-                From social media mastery and content creation to performance ads and CRM automation. 
-                Complete growth systems for ambitious media brands.
-              </motion.p>
+  <div className="relative z-20 section-padding w-full">
+    <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
-              {/* CTAs */}
-              <motion.div
-                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-                className="flex flex-col sm:flex-row gap-4 mb-12"
-              >
-                <a
-                  href="#services"
-                  className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-coral text-primary-foreground font-bold text-lg shadow-xl hover:scale-105 transition-all duration-300"
-                >
-                  Explore Services
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </a>
-                <a
-                  href="/contact"
-                  className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-card/80 backdrop-blur border-2 border-border font-bold text-lg hover:border-primary/50 hover:shadow-2xl transition-all"
-                >
-                  <PlayCircle size={20} className="text-primary ml-0.5" />
-                  Book Free Call
-                </a>
-              </motion.div>
+      {/* LEFT */}
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+      >
 
-              {/* Social Proof Stats */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="flex flex-wrap gap-6"
-              >
-                <div className="flex items-center gap-3 p-4 rounded-2xl bg-card/60 backdrop-blur">
-                  <div className="w-12 h-12 rounded-xl bg-peach flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-lg">8+</div>
-                    <div className="text-sm text-muted-foreground">Services</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-4 rounded-2xl bg-card/60 backdrop-blur">
-                  <div className="w-12 h-12 rounded-xl bg-sky flex items-center justify-center">
-                    <Film className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-lg">500+</div>
-                    <div className="text-sm text-muted-foreground">Campaigns</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-4 rounded-2xl bg-card/60 backdrop-blur">
-                  <div className="w-12 h-12 rounded-xl bg-lime flex items-center justify-center">
-                    <BarChart3 className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-lg">98%</div>
-                    <div className="text-sm text-muted-foreground">Success Rate</div>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+        {/* Badge */}
+        <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
+          <span className="pill-badge bg-gradient-to-r from-peach to-coral text-white shadow-lg">
+            🚀 Growth-Focused Digital Agency
+          </span>
+        </motion.div>
 
-            {/* Right: Visual Preview */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, x: 40 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="blob-shape-3 overflow-hidden w-full aspect-[4/3] shadow-2xl rounded-3xl relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-peach/20 via-sky/10 to-ocean/20" />
-                <div className="relative z-10 w-full h-full flex items-center justify-center p-12">
-                  <div className="text-center">
-                    <div className="w-32 h-32 bg-gradient-to-r from-coral to-peach rounded-3xl flex items-center justify-center mb-6 shadow-2xl mx-auto">
-                      <Smartphone className="w-16 h-16 text-white" />
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-center gap-4 text-3xl mb-4">
-                        <Monitor className="text-sky" />
-                        <PlayCircle className="text-lime w-12 h-12 animate-spin-slow" />
-                        <TrendingUp className="text-coral" />
-                      </div>
-                      <div className="text-2xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text">
-                        Full-Stack Growth
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        {/* Headline */}
+        <motion.h1
+          variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+          className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold leading-[1.05] mt-6 mb-6"
+        >
+          From Clicks to Clients —{" "}
+          <span className="text-gradient-coral">
+            We Build Your Growth Engine
+          </span>
+        </motion.h1>
+
+        {/* Subheadline */}
+        <motion.p
+          variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+          className="text-xl text-muted-foreground max-w-lg mb-8 leading-relaxed"
+        >
+          We combine SEO, paid ads, and content systems to turn your brand into a{" "}
+          <span className="text-foreground font-semibold">
+            predictable revenue machine
+          </span>{" "}
+          — not just likes and impressions.
+        </motion.p>
+
+        {/* Micro trust */}
+        <motion.p
+          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+          className="text-sm text-muted-foreground mb-8"
+        >
+          Helping brands scale across Maharashtra & beyond • No long-term contracts
+        </motion.p>
+
+        {/* CTA */}
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+          className="flex flex-col sm:flex-row gap-4 mb-10"
+        >
+          <a
+            href="/contact"
+            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-coral text-primary-foreground font-bold text-lg shadow-xl hover:scale-105 transition-all"
+          >
+            Get Free Growth Plan
+            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+
+          <a
+            href="#services"
+            className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-card/80 backdrop-blur border-2 border-border font-semibold text-lg hover:border-primary/50 hover:shadow-xl transition-all"
+          >
+            See How It Works
+          </a>
+        </motion.div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="flex flex-wrap gap-6"
+        >
+          {[
+            { value: "3.2x ROI", label: "Avg Growth" },
+            { value: "120+", label: "Brands Scaled" },
+            { value: "< 90 Days", label: "Results" },
+          ].map((stat) => (
+            <div key={stat.label} className="p-4 rounded-2xl bg-card/60 backdrop-blur">
+              <div className="text-xl font-bold">{stat.value}</div>
+              <div className="text-xs text-muted-foreground">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* RIGHT - DASHBOARD UI */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, x: 40 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative"
+      >
+
+        <div className="rounded-3xl bg-card border border-border shadow-2xl p-6 space-y-6">
+
+          {/* Header */}
+          <div className="flex justify-between items-center">
+            <div>
+              <p className="text-sm font-semibold">Growth Dashboard</p>
+              <p className="text-xs text-muted-foreground">Live Performance</p>
+            </div>
+            <span className="text-xs bg-green-500/10 text-green-500 px-3 py-1 rounded-full">
+              ● Live
+            </span>
+          </div>
+
+          {/* Metrics */}
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              { label: "Traffic", value: "+240%" },
+              { label: "Leads", value: "+180%" },
+              { label: "Revenue", value: "+320%" },
+            ].map((m) => (
+              <div key={m.label} className="bg-background p-4 rounded-xl text-center">
+                <div className="text-lg font-bold">{m.value}</div>
+                <div className="text-xs text-muted-foreground">{m.label}</div>
               </div>
+            ))}
+          </div>
 
-              {/* Floating service icons */}
-              <div className="absolute -top-8 -right-8 w-20 h-20 bg-gradient-to-r from-ocean to-sky rounded-2xl flex items-center justify-center shadow-xl animate-float">
-                <MessageSquare className="w-8 h-8 text-white" />
-              </div>
-              <div className="absolute -bottom-12 left-12 w-16 h-16 bg-lime rounded-xl flex items-center justify-center shadow-lg animate-bounce">
-                <Users className="w-7 h-7 text-white" />
-              </div>
-            </motion.div>
+          {/* Graph fake */}
+          <div className="h-24 bg-gradient-to-r from-coral/20 via-ocean/20 to-lime/20 rounded-xl flex items-end px-2">
+            <div className="w-2 h-6 bg-coral rounded mr-1" />
+            <div className="w-2 h-10 bg-ocean rounded mr-1" />
+            <div className="w-2 h-14 bg-lime rounded mr-1" />
+            <div className="w-2 h-16 bg-coral rounded mr-1" />
+            <div className="w-2 h-20 bg-ocean rounded" />
+          </div>
+
+          {/* Funnel */}
+          <div className="text-xs text-muted-foreground text-center">
+            Traffic → Leads → Customers
           </div>
         </div>
-      </header>
+
+        {/* Floating icons */}
+        <div className="absolute -top-6 -right-6 w-16 h-16 bg-ocean rounded-xl flex items-center justify-center text-white shadow-lg animate-float">
+          <TrendingUp />
+        </div>
+
+        <div className="absolute -bottom-6 left-10 w-14 h-14 bg-lime rounded-xl flex items-center justify-center text-white shadow-lg animate-bounce">
+          <Users />
+        </div>
+      </motion.div>
+
+    </div>
+  </div>
+</header>}
+
+      {/* SOCIOLITES APPROACH */}
+      <section className="section-padding bg-gradient-to-b from-background to-card">
+        <div className="max-w-7xl mx-auto">
+
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <p className="text-xs font-semibold tracking-widest uppercase text-coral mb-3">
+              The Sociolites Approach
+            </p>
+            <h2 className="text-4xl sm:text-5xl font-display font-bold mb-6">
+              Built for <span className="text-gradient-coral">Real Growth</span>, Not Vanity Metrics
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Every service is designed to drive measurable results — from visibility to revenue.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            {[
+              {
+                title: "Custom SEO Solutions",
+                desc: "We dominate local and national search. Rank your brand for high-intent keywords across MH, MP & beyond.",
+                img: "https://images.unsplash.com/photo-1562577309-2592ab84b1bc",
+              },
+              {
+                title: "Performance Marketing",
+                desc: "Precision-targeted Meta & Google Ads optimized for results — not impressions.",
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+              },
+              {
+                title: "Social Media & Branding",
+                desc: "High-impact content that converts casual users into loyal followers.",
+                img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+              },
+              {
+                title: "IT & Digital Experience",
+                desc: "UI/UX and tech solutions that act as your 24/7 digital salesman.",
+                img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+              },
+              {
+                title: "Business Strategy",
+                desc: "End-to-end consulting to build your marketing engine from scratch.",
+                img: "https://images.unsplash.com/photo-1556740749-887f6717d7e4",
+              },
+              {
+                title: "Custom Targeting",
+                desc: "We find your exact audience — metro cities or fast-growing markets.",
+                img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                {...fadeUp}
+                transition={{ delay: i * 0.1 }}
+                className="group relative rounded-3xl overflow-hidden card-elevated"
+              >
+                {/* IMAGE */}
+                <div className="absolute inset-0">
+                  <img
+                    src={`${item.img}?auto=format&fit=crop&w=800&q=80`}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                </div>
+
+                {/* CONTENT */}
+                <div className="relative z-10 p-6 h-64 flex flex-col justify-end">
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-white/80 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+
+          </div>
+        </div>
+      </section>
 
       {/* SERVICES GRID */}
       <section className="section-padding">

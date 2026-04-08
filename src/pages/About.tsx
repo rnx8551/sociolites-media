@@ -72,9 +72,11 @@ const About = () => {
       />
 
       {/* HERO */}
-      <section className="relative min-h-[60vh] flex items-center pt-32 pb-20">
-        <div className="relative z-10 w-full section-padding">
+      <section className="relative pt-16 md:pt-20">
+        <div className="w-full pt-8 section-padding">
           <div className="max-w-6xl mx-auto">
+
+            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: isMobile ? 10 : 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -86,26 +88,105 @@ const About = () => {
               </div>
             </motion.div>
 
+            {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: isMobile ? 10 : 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-5xl sm:text-6xl font-display font-extrabold leading-tight mb-6"
             >
-              We don’t chase attention.{" "}
-              <span className="text-gradient-coral">We engineer it.</span>
+              Central India's Bridge to{" "}
+              <span className="text-gradient-coral">Digital Excellence.</span>
             </motion.h1>
 
+            {/* Subtext */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg text-muted-foreground max-w-2xl leading-relaxed"
+              className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-16"
             >
-              Sociolites is a performance-driven growth partner helping ambitious
-              brands scale visibility, trust, and revenue through strategy-led
-              marketing.
+              Sociolites is a startup-born agency with a mission to decentralize
+              high-end marketing. While our office is in Gondia, our impact spans
+              across Maharashtra and Madhya Pradesh. We recognized a gap: brands
+              needed the speed of a startup but the stability of a big agency. We
+              are that{" "}
+              <span className="font-bold text-foreground">"Neat Fit."</span>
             </motion.p>
+
+            {/* Legacy + Playbook Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              {[
+                {
+                  tag: "Legacy & Launch",
+                  title: "30+ brands. One new mission.",
+                  body: "We launched Sociolites in 2024, but our team brings a combined history of working with 30+ brands. From crores in media spend to millions of organic sessions — we've done the heavy lifting for others. Now we're doing it for the Sociolites family.",
+                  pills: ["Launched 2024", "30+ Brand History", "4 Active Clients"],
+                },
+                {
+                  tag: "Gold-Standard Playbook",
+                  title: "Same strategy, now under our name.",
+                  body: "We currently manage 4 high-growth clients under the Sociolites banner, applying the same gold-standard strategies that fueled our previous 30+ successes. Proven frameworks, not experiments.",
+                  pills: ["Crores in Media Spend", "Millions of Organic Sessions"],
+                },
+              ].map((card, i) => (
+                <motion.div
+                  key={card.tag}
+                  initial={{ opacity: 0, y: isMobile ? 10 : 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.3 + i * 0.1 }}
+                  className="card-elevated p-7 border-t-2 border-t-coral rounded-2xl relative overflow-hidden"
+                >
+                  <p className="text-xs font-semibold tracking-widest uppercase text-coral mb-2">
+                    {card.tag}
+                  </p>
+                  <h3 className="text-xl font-display font-bold mb-3">{card.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {card.body}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {card.pills.map((p) => (
+                      <span
+                        key={p}
+                        className="text-xs font-semibold bg-peach text-coral rounded-full px-3 py-1"
+                      >
+                        {p}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Vision 2028 Strip */}
+            <motion.div
+              initial={{ opacity: 0, y: isMobile ? 10 : 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="rounded-2xl p-10 flex items-center gap-8 flex-wrap"
+              style={{
+                background: "linear-gradient(135deg, #E8593C 0%, #C44E26 50%, #F2A623 100%)",
+              }}
+            >
+              <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+                {/* clock/target icon */}
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-xs font-semibold tracking-widest uppercase text-white/70 mb-2">
+                  Our Vision 2028
+                </p>
+                <p className="text-lg font-bold text-white leading-snug max-w-xl">
+                  To be the most preferred growth partner in Central India —
+                  empowering talent and businesses through Performance-Oriented
+                  Creativity and AI-Native SOPs.
+                </p>
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
@@ -113,22 +194,36 @@ const About = () => {
       {/* PROOF STRIP */}
       <section className="bg-card border-y border-border">
         <div className="section-padding">
-          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { value: "2", label: "Years in Market" },
-              { value: "150+", label: "Brands Scaled" },
-              { value: "100+", label: "Impressions Generated" },
-              { value: "94%", label: "Client Retention" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-4xl font-display font-extrabold text-primary">
-                  {stat.value}
-                </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+          <div className="max-w-6xl mx-auto">
+
+            {/* Quote Row */}
+            <div className="pb-6 mb-6 border-b border-border">
+              <p className="text-base md:text-lg leading-relaxed text-foreground max-w-3xl">
+                Our core team has previously delivered results for{" "}
+                <span className="text-coral font-semibold">30+ brands</span> across
+                E-commerce, Real Estate, and IT sectors. Now, we are bringing that
+                same excellence to the{" "}
+                <span className="text-coral font-semibold">Sociolites family.</span>
+              </p>
+            </div>
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-y md:divide-y-0 md:divide-x divide-border">
+              {[
+                { value: "4", label: "Active Clients" },
+                { value: "320%", label: "Avg. Growth" },
+                { value: "30+", label: "Brands History" },
+                { value: "100%", label: "Transparency" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center py-6 md:py-0 md:px-6">
+                  <p className="text-4xl font-display font-extrabold text-gradient-coral">
+                    {stat.value}
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-2">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>

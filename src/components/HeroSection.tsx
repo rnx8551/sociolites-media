@@ -50,10 +50,10 @@ const HeroSection = () => {
               variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
               className="relative text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold leading-[1.05] tracking-tight mb-6"
             >
-              ROI-Driven
+              Cease Hiring Vendors.
               <br />
               <span className="text-gradient-coral relative inline-block">
-                Digital Marketing
+                Collaborate with Growth Architects Instead
                 <span className="absolute inset-0 blur-3xl bg-primary/30 -z-10" />
                 <svg
                   className="absolute -bottom-2 left-0 w-full"
@@ -68,8 +68,6 @@ const HeroSection = () => {
                   />
                 </svg>
               </span>
-              <br />
-              That Scales Brands
             </motion.h1>
 
             {/* Subtitle */}
