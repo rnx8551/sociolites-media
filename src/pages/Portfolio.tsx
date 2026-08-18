@@ -116,12 +116,12 @@ const Portfolio = () => {
             </motion.h1>
 
             <motion.p {...fadeUp} transition={{ delay: 0.2 }} className="text-lg text-muted-foreground max-w-2xl mb-10">
-              We've helped 30+ brands find their voice. Here is a glimpse of the results we delivered while working with diverse industry leaders.
+              We've helped 20+ brands find their voice. Here is a glimpse of the results we delivered while working with diverse industry leaders.
             </motion.p>
 
             <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
-                { value: "30+", label: "Brands Scaled" },
+                { value: "20+", label: "Brands Scaled" },
                 { value: "4.5X", label: "Avg. ROAS" },
                 { value: "320%", label: "Lead Growth" },
                 { value: "#1", label: "Local Rankings" },

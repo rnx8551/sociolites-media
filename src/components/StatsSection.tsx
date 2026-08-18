@@ -5,7 +5,7 @@ import { Award, Users, Target, Rocket } from "lucide-react";
 const stats = [
   {
     icon: Users,
-    value: "30+",
+    value: "20+",
     label: "Happy Clients",
     sub: "Serving businesses across multiple industries",
     bg: "card-coral",

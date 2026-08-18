@@ -31,12 +31,12 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: "Encee Manoj",
-    role: "Professional Anchor & Emcee",
+    name: "Bliss International Resort",
+    role: "Luxury Resort & Event Destination, Gondia",
     image: "bg-gradient-to-br from-lavender to-purple-500",
-    initial: "EM",
+    initial: "BR",
     quote:
-      "As an anchor, personal branding is everything. Sociolites helped me build a polished digital presence that now attracts premium event organizers. My social media engagement went through the roof and bookings have never been better. Best decision I made for my career.",
+      "Partnering with Sociolites gave our resort incredible digital reach across Central India. From destination wedding inquiries to weekend staycation bookings, their creative campaigns and visual storytelling brought in high-value guests consistently. They truly know how to showcase hospitality.",
     rating: 5,
   },
 ];
@@ -164,7 +164,7 @@ const TestimonialSection = () => {
         >
           {[
             { number: "4.9/5", label: "Average Client Rating" },
-            { number: "30+", label: "Businesses Scaled" },
+            { number: "20+", label: "Businesses Scaled" },
             { number: "98%", label: "Client Satisfaction" },
           ].map((stat) => (
             <div key={stat.label}>

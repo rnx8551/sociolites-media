@@ -84,7 +84,7 @@ const CTASection = () => {
 
           {/* Trust line */}
           <p className="mt-6 text-xs text-background/50">
-            Trusted by 30+ brands • Avg response time under 24 hours
+            Trusted by 20+ brands • Avg response time under 24 hours
           </p>
 
           {/* Contact info pills */}

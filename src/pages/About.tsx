@@ -127,14 +127,14 @@ const About = () => {
               {[
                 {
                   tag: "Legacy & Launch",
-                  title: "30+ brands. One new mission.",
-                  body: "We launched Sociolites in 2024, but our team brings a combined history of working with 30+ brands. From crores in media spend to millions of organic sessions — we've done the heavy lifting for others. Now we're doing it for the Sociolites family.",
-                  pills: ["Launched 2024", "30+ Brand History", "4 Active Clients"],
+                  title: "20+ brands. One new mission.",
+                  body: "We launched Sociolites in 2024, but our team brings a combined history of working with 20+ brands. From crores in media spend to millions of organic sessions — we've done the heavy lifting for others. Now we're doing it for the Sociolites family.",
+                  pills: ["Launched 2024", "20+ Brand History", "7 Active Clients"],
                 },
                 {
                   tag: "Gold-Standard Playbook",
                   title: "Same strategy, now under our name.",
-                  body: "We currently manage 4 high-growth clients under the Sociolites banner, applying the same gold-standard strategies that fueled our previous 30+ successes. Proven frameworks, not experiments.",
+                  body: "We currently manage 7 high-growth clients under the Sociolites banner, applying the same gold-standard strategies that fueled our previous 20+ successes. Proven frameworks, not experiments.",
                   pills: ["Crores in Media Spend", "Millions of Organic Sessions"],
                 },
               ].map((card, i) => (
@@ -208,7 +208,7 @@ const About = () => {
             <div className="pb-6 mb-6 border-b border-border">
               <p className="text-base md:text-lg leading-relaxed text-foreground max-w-3xl">
                 Our core team has previously delivered results for{" "}
-                <span className="text-coral font-semibold">30+ brands</span> across
+                <span className="text-coral font-semibold">20+ brands</span> across
                 E-commerce, Real Estate, and IT sectors. Now, we are bringing that
                 same excellence to the{" "}
                 <span className="text-coral font-semibold">Sociolites family.</span>
@@ -218,9 +218,9 @@ const About = () => {
             {/* Stats Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-y md:divide-y-0 md:divide-x divide-border">
               {[
-                { value: "4", label: "Active Clients" },
+                { value: "7", label: "Active Clients" },
                 { value: "320%", label: "Avg. Growth" },
-                { value: "30+", label: "Brands History" },
+                { value: "20+", label: "Brands History" },
                 { value: "100%", label: "Transparency" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center py-6 md:py-0 md:px-6">
