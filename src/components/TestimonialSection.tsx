@@ -5,34 +5,38 @@ import { Star, Quote } from "lucide-react";
 const testimonials = [
   {
     name: "Ar. Sandeep Baghele",
-    role: "Architect",
+    role: "Architect & Interior Designer, Nagpur",
     image: "bg-gradient-to-br from-coral to-pink-500",
+    initial: "SB",
     quote:
-      "Sociolites transformed our social media presence. Our engagement went up 340% in just 3 months!",
+      "Sociolites completely transformed how my practice looks online. My Instagram grew from near-zero to a highly engaged audience of real clients. The quality of leads we now get from social media is exceptional — several major projects have come directly through our profile.",
     rating: 5,
   },
   {
-    name: "Anurag Agrawal",
-    role: "Backery Owner",
+    name: "Ramayana Hospital",
+    role: "Multi-Speciality Hospital, Gondia",
     image: "bg-gradient-to-br from-ocean to-cyan-500",
+    initial: "RH",
     quote:
-      "The team is incredibly creative and data-driven. They understand our brand and deliver results.",
+      "We partnered with Sociolites to grow our patient inquiries online and the results speak for themselves. Our Google visibility improved dramatically and the WhatsApp-based campaign they ran brought in consistent appointment bookings every week. Truly a result-driven team.",
     rating: 5,
   },
   {
-    name: "Dr. Nitin Shrivastava",
-    role: "Dentist",
+    name: "Netrasetu Eye Hospital",
+    role: "Eye Care Specialist, Gondia",
     image: "bg-gradient-to-br from-lime to-green-500",
+    initial: "NE",
     quote:
-      "Best investment we made in our marketing. Sociolites consistently exceeds expectations.",
+      "Sociolites understood our niche perfectly. They created awareness campaigns for cataract and LASIK that reached exactly the right audience in and around Gondia. Our consultation bookings saw a significant rise within the first 60 days. Highly professional team.",
     rating: 5,
   },
   {
     name: "Encee Manoj",
-    role: "Anchor",
+    role: "Professional Anchor & Emcee",
     image: "bg-gradient-to-br from-lavender to-purple-500",
+    initial: "EM",
     quote:
-      "Professional, responsive, and results-oriented. Highly recommend Sociolites to any business.",
+      "As an anchor, personal branding is everything. Sociolites helped me build a polished digital presence that now attracts premium event organizers. My social media engagement went through the roof and bookings have never been better. Best decision I made for my career.",
     rating: 5,
   },
 ];
@@ -129,9 +133,13 @@ const TestimonialSection = () => {
                 {/* Author */}
                 <footer className="flex items-center gap-4 pt-6 border-t border-border">
                   <div
-                    className={`w-14 h-14 rounded-full ${t.image} shadow-md`}
+                    className={`w-14 h-14 rounded-full ${t.image} shadow-md flex items-center justify-center`}
                     aria-hidden
-                  />
+                  >
+                    <span className="text-white font-display font-extrabold text-lg">
+                      {t.initial}
+                    </span>
+                  </div>
                   <div>
                     <cite
                       itemProp="author"

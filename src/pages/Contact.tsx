@@ -8,20 +8,27 @@ import {
   Instagram,
   Linkedin,
   Twitter,
+  ArrowRight,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const Contact = () => {
   const prefersReducedMotion = useReducedMotion();
-
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     brand: "",
     goal: "",
     challenge: "",
   });
+
+  useEffect(() => {
+    document.title = "Contact | Sociolites — Get a Free Strategy Call";
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -33,22 +40,16 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    const body = `
-Brand / Startup: ${formData.brand}
-Goal: ${formData.goal}
-
-Biggest Challenge:
-${formData.challenge}
-`;
-
-    window.location.href = `mailto:ashrivastava201819@gmail.com?subject=New Strategy Inquiry&body=${encodeURIComponent(
-      body
-    )}`;
-
+    const body = `Brand / Startup: ${formData.brand}\nGoal: ${formData.goal}\n\nBiggest Challenge:\n${formData.challenge}`;
+    // Open mailto in new tab so user stays on page
+    window.open(
+      `mailto:ashrivastava201819@gmail.com?subject=New Strategy Inquiry&body=${encodeURIComponent(body)}`,
+      "_blank"
+    );
     setTimeout(() => {
       setFormData({ brand: "", goal: "", challenge: "" });
       setIsSubmitting(false);
+      setSubmitted(true);
     }, 500);
   };
 
@@ -58,6 +59,7 @@ ${formData.challenge}
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <ScrollProgress />
       <Navbar />
 
       {/* HERO */}
@@ -126,12 +128,43 @@ ${formData.challenge}
             </p>
           </motion.div>
 
-          {/* FORM */}
-          <motion.form
-            {...fadeUp}
-            onSubmit={handleSubmit}
-            className="card-elevated p-8 md:p-10 space-y-6"
-          >
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="card-elevated p-8 md:p-10 flex flex-col items-center text-center gap-6"
+              >
+                <div className="w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                  <CheckCircle size={40} className="text-green-500" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-display font-bold mb-2">Message Sent! 🎉</h3>
+                  <p className="text-muted-foreground">
+                    Your email client opened with your inquiry. We typically respond within 24 hours.
+                  </p>
+                </div>
+                <a
+                  href={`https://wa.me/917020698446?text=${encodeURIComponent('Hi Sociolites! I just sent an email inquiry and would love to chat.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-3 rounded-full font-bold text-white text-sm"
+                  style={{ background: "linear-gradient(135deg, #25D366, #128C7E)" }}
+                >
+                  Also ping us on WhatsApp <ArrowRight size={16} />
+                </a>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Send another inquiry
+                </button>
+              </motion.div>
+            ) : (
+              <motion.form
+                {...fadeUp}
+                onSubmit={handleSubmit}
+                className="card-elevated p-8 md:p-10 space-y-6"
+              >
             <h3 className="text-2xl font-display font-bold">
               Tell us about{" "}
               <span className="text-gradient-coral">your brand</span>
@@ -197,10 +230,11 @@ ${formData.challenge}
               <Send size={18} />
             </button>
 
-            <p className="text-xs text-muted-foreground text-center">
-              🔒 Your details stay private. No spam, ever.
-            </p>
-          </motion.form>
+                <p className="text-xs text-muted-foreground text-center">
+                  🔒 Your details stay private. No spam, ever.
+                </p>
+              </motion.form>
+            )}
         </div>
       </section>
 
@@ -269,6 +303,7 @@ ${formData.challenge}
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

@@ -1,28 +1,28 @@
-import { Instagram, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Instagram, Twitter, Linkedin, Youtube, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const socialLinks = [
   {
     Icon: Instagram,
-    href: "https://www.instagram.com/sociolites_marketing_agency?igsh=MXJtanBwenV2OWQ2bQ==",
+    href: "https://www.instagram.com/sociolites_marketing_agency",
     label: "Instagram",
     bg: "bg-peach hover:bg-primary",
   },
   {
     Icon: Twitter,
-    href: "https://twitter.com",
-    label: "Twitter",
+    href: "https://twitter.com/sociolites",
+    label: "Twitter / X",
     bg: "bg-sky hover:bg-ocean",
   },
   {
     Icon: Linkedin,
-    href: "https://linkedin.com",
+    href: "https://linkedin.com/company/sociolites",
     label: "LinkedIn",
     bg: "bg-mint hover:bg-secondary",
   },
   {
     Icon: Youtube,
-    href: "https://youtube.com",
+    href: "https://youtube.com/@sociolites",
     label: "YouTube",
     bg: "bg-lavender hover:bg-primary",
   },
@@ -30,29 +30,38 @@ const socialLinks = [
 
 const companyLinks = [
   { label: "About Us", to: "/about" },
-  { label: "Careers", to: "/careers" },
+  { label: "Services", to: "/services" },
+  { label: "Portfolio", to: "/portfolio" },
   { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ];
 
 const serviceLinks = [
-  "Search Growth",
-  "Social Virality",
-  "Paid Acquisition",
-  "Brand Identity",
+  { label: "Social Media Marketing", to: "/services" },
+  { label: "SEO & Organic Growth", to: "/services" },
+  { label: "Paid Advertising", to: "/services" },
+  { label: "Brand Identity & Design", to: "/services" },
+  { label: "Content Creation", to: "/services" },
+];
+
+const legalLinks = [
+  { label: "Privacy Policy", to: "/privacy" },
+  { label: "Terms of Service", to: "/terms" },
+  { label: "Cookies", to: "/cookies" },
 ];
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-muted/30 border-t border-border">
+    <footer className="relative overflow-hidden bg-muted/30 border-t border-border" aria-label="Footer">
       {/* Top wave */}
-      <div className="absolute top-0 left-0 right-0 h-20 bg-muted/50 wave-top" />
+      <div className="absolute top-0 left-0 right-0 h-20 bg-muted/50 wave-top pointer-events-none" />
 
       <div className="w-full section-padding pt-16 pb-8 relative">
         <div className="max-w-6xl mx-auto relative">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+
             {/* Brand */}
-            <div className="md:col-span-5">
+            <div className="md:col-span-4">
               <div className="flex items-center gap-3 mb-5">
                 <div className="relative w-12 h-12">
                   <div className="absolute inset-0 bg-primary blob-shape blur-lg opacity-70" />
@@ -65,14 +74,22 @@ const Footer = () => {
                 </span>
               </div>
 
-              <p className="text-muted-foreground/90 max-w-xs leading-relaxed">
+              <p className="text-muted-foreground/90 max-w-xs leading-relaxed text-sm">
                 Your digital growth partner. Crafting viral moments and building
-                brands people can’t stop talking about.
+                brands people can't stop talking about.
               </p>
 
-              <p className="text-xs text-muted-foreground mt-3">
-                🌍 Serving clients in India
-              </p>
+              <div className="flex flex-col gap-2 mt-4 text-sm text-muted-foreground">
+                <a href="mailto:ashrivastava201819@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <Mail size={13} /> ashrivastava201819@gmail.com
+                </a>
+                <a href="tel:+917020698446" className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <Phone size={13} /> +91 70206 98446
+                </a>
+                <span className="flex items-center gap-2">
+                  <MapPin size={13} /> Gondia, Maharashtra, India
+                </span>
+              </div>
 
               {/* Socials */}
               <div className="flex gap-3 mt-6">
@@ -106,8 +123,7 @@ const Footer = () => {
                   <Link
                     key={label}
                     to={to}
-                    className="relative text-muted-foreground text-sm font-medium hover:text-primary transition-colors
-                    after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                    className="hover-underline text-muted-foreground text-sm font-medium hover:text-primary transition-colors"
                   >
                     {label}
                   </Link>
@@ -116,18 +132,19 @@ const Footer = () => {
             </div>
 
             {/* Services */}
-            <div className="md:col-span-2">
+            <div className="md:col-span-3">
               <h4 className="font-display font-bold text-foreground mb-5 text-sm uppercase tracking-wider">
                 Services
               </h4>
               <div className="flex flex-col gap-3">
-                {serviceLinks.map((service) => (
-                  <span
-                    key={service}
-                    className="text-muted-foreground text-sm font-medium"
+                {serviceLinks.map(({ label, to }) => (
+                  <Link
+                    key={label}
+                    to={to}
+                    className="hover-underline text-muted-foreground text-sm font-medium hover:text-primary transition-colors"
                   >
-                    {service}
-                  </span>
+                    {label}
+                  </Link>
                 ))}
               </div>
             </div>
@@ -137,41 +154,55 @@ const Footer = () => {
               <h4 className="font-display font-bold text-foreground mb-5 text-sm uppercase tracking-wider">
                 Stay Updated
               </h4>
-              {/* <p className="text-muted-foreground text-sm mb-4">
-                Join 5,000+ founders getting weekly growth hacks.
-              </p> */}
+              <p className="text-muted-foreground text-sm mb-4">
+                Get weekly growth tips and digital marketing insights.
+              </p>
 
-              <div className="flex gap-2">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const input = (e.target as HTMLFormElement).querySelector('input') as HTMLInputElement;
+                  if (input.value) {
+                    window.location.href = `mailto:ashrivastava201819@gmail.com?subject=Newsletter Signup&body=Please subscribe me: ${input.value}`;
+                  }
+                }}
+                className="flex gap-2"
+              >
                 <input
                   type="email"
-                  aria-label="Email address"
+                  aria-label="Email address for newsletter"
                   required
                   placeholder="Your email"
-                  className="flex-1 px-4 py-2.5 rounded-full bg-muted text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="flex-1 px-4 py-2.5 rounded-full bg-muted text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary border border-border"
                 />
                 <button
-                  aria-label="Subscribe"
-                  className="px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-bold text-sm hover:scale-105 transition-transform"
+                  type="submit"
+                  aria-label="Subscribe to newsletter"
+                  className="px-4 py-2.5 rounded-full bg-primary text-primary-foreground font-bold text-sm hover:scale-105 transition-transform"
                 >
-                  →
+                  <ArrowUpRight size={16} />
                 </button>
-              </div>
+              </form>
+
+              <p className="text-xs text-muted-foreground mt-3">
+                🔒 No spam. Unsubscribe anytime.
+              </p>
             </div>
           </div>
 
           {/* Bottom bar */}
           <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-muted-foreground text-sm">
-              © 2026 Sociolites. Crafted with ❤️
+              © {new Date().getFullYear()} Sociolites. Crafted with ❤️ in Gondia, India
             </p>
             <div className="flex gap-6">
-              {["Privacy", "Terms", "Cookies"].map((link) => (
+              {legalLinks.map(({ label, to }) => (
                 <Link
-                  key={link}
-                  to={`/${link.toLowerCase()}`}
+                  key={label}
+                  to={to}
                   className="text-xs text-muted-foreground hover:text-primary transition-colors font-medium"
                 >
-                  {link}
+                  {label}
                 </Link>
               ))}
             </div>

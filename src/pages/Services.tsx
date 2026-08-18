@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { useEffect } from "react";
 import {
   ArrowRight,
   TrendingUp,
@@ -13,6 +14,8 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollProgress from "@/components/ScrollProgress";
 
 /* ----------------------------------
    Motion config (mobile optimized)
@@ -29,6 +32,10 @@ const useFadeUp = () => {
 
 const Services = () => {
   const fadeUp = useFadeUp();
+
+  useEffect(() => {
+    document.title = "Services | Sociolites — Digital Marketing Solutions";
+  }, []);
 
   const services = [
     {
@@ -155,6 +162,7 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <ScrollProgress />
       <Navbar />
 
       {/* SEO SCHEMA */}
@@ -162,10 +170,11 @@ const Services = () => {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
-          name: "Your Agency Name",
-          url: "https://yourdomain.com/services",
-          areaServed: "Worldwide",
+          name: "Sociolites",
+          url: "https://sociolites.in/services",
+          areaServed: ["Maharashtra", "Madhya Pradesh", "India", "Worldwide"],
           serviceType: "Digital Marketing",
+          description: "Full-service digital marketing including SEO, paid ads, social media, content creation, branding and growth strategy.",
         })}
       </script>
 
@@ -502,6 +511,7 @@ const Services = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

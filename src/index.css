@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -8,35 +8,24 @@
   :root {
     --background: 40 30% 97%;
     --foreground: 230 25% 12%;
-
     --card: 0 0% 100%;
     --card-foreground: 230 25% 12%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 230 25% 12%;
-
     --primary: 12 90% 62%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 220 85% 58%;
     --secondary-foreground: 0 0% 100%;
-
     --muted: 40 20% 93%;
     --muted-foreground: 230 10% 45%;
-
     --accent: 75 70% 50%;
     --accent-foreground: 230 25% 12%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-
     --border: 40 15% 88%;
     --input: 40 15% 88%;
     --ring: 12 90% 62%;
-
     --radius: 1rem;
-
-    /* Custom tokens */
     --coral: 12 90% 62%;
     --ocean: 220 85% 58%;
     --lime: 75 70% 50%;
@@ -44,13 +33,11 @@
     --sky: 210 100% 95%;
     --mint: 160 50% 93%;
     --lavender: 260 60% 95%;
-
     --shadow-soft: 0 4px 30px -4px hsl(230 25% 12% / 0.08);
     --shadow-card: 0 8px 40px -8px hsl(230 25% 12% / 0.1);
     --shadow-elevated: 0 20px 60px -15px hsl(230 25% 12% / 0.15);
     --shadow-coral: 0 10px 40px -8px hsl(12 90% 62% / 0.3);
     --shadow-ocean: 0 10px 40px -8px hsl(220 85% 58% / 0.3);
-
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 230 25% 12%;
     --sidebar-primary: 12 90% 62%;
@@ -60,234 +47,147 @@
     --sidebar-border: 40 15% 88%;
     --sidebar-ring: 12 90% 62%;
   }
+
+  .dark {
+    --background: 230 20% 7%;
+    --foreground: 40 20% 95%;
+    --card: 230 18% 11%;
+    --card-foreground: 40 20% 95%;
+    --popover: 230 18% 11%;
+    --popover-foreground: 40 20% 95%;
+    --primary: 12 90% 62%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 85% 58%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 230 15% 16%;
+    --muted-foreground: 230 10% 60%;
+    --accent: 75 70% 50%;
+    --accent-foreground: 230 25% 12%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 230 15% 18%;
+    --input: 230 15% 18%;
+    --ring: 12 90% 62%;
+    --coral: 12 90% 62%;
+    --ocean: 220 85% 58%;
+    --lime: 75 70% 50%;
+    --peach: 20 60% 18%;
+    --sky: 210 60% 16%;
+    --mint: 160 40% 15%;
+    --lavender: 260 40% 18%;
+    --shadow-soft: 0 4px 30px -4px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 8px 40px -8px hsl(0 0% 0% / 0.4);
+    --shadow-elevated: 0 20px 60px -15px hsl(0 0% 0% / 0.5);
+    --shadow-coral: 0 10px 40px -8px hsl(12 90% 62% / 0.4);
+    --shadow-ocean: 0 10px 40px -8px hsl(220 85% 58% / 0.4);
+    --sidebar-background: 230 20% 7%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 12 90% 62%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 230 15% 16%;
+    --sidebar-accent-foreground: 40 20% 95%;
+    --sidebar-border: 230 15% 18%;
+    --sidebar-ring: 12 90% 62%;
+  }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground font-body antialiased;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-display;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground font-body antialiased; }
+  h1, h2, h3, h4, h5, h6 { @apply font-display; }
+  html { scroll-behavior: smooth; }
 }
 
 @layer components {
-  /* Unique blob shapes */
-  .blob-shape {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
+  .blob-shape { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  .blob-shape-2 { border-radius: 30% 70% 60% 40% / 50% 60% 40% 50%; }
+  .blob-shape-3 { border-radius: 50% 50% 30% 70% / 40% 60% 40% 60%; }
+  .wave-top { clip-path: ellipse(80% 60% at 50% 100%); }
+  .wave-bottom { clip-path: ellipse(80% 60% at 50% 0%); }
+  .diagonal-cut { clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0% 100%); }
+  .diagonal-cut-reverse { clip-path: polygon(0 0%, 100% 5%, 100% 100%, 0% 95%); }
 
-  .blob-shape-2 {
-    border-radius: 30% 70% 60% 40% / 50% 60% 40% 50%;
-  }
-
-  .blob-shape-3 {
-    border-radius: 50% 50% 30% 70% / 40% 60% 40% 60%;
-  }
-
-  /* Wavy section dividers */
-  .wave-top {
-    clip-path: ellipse(80% 60% at 50% 100%);
-  }
-
-  .wave-bottom {
-    clip-path: ellipse(80% 60% at 50% 0%);
-  }
-
-  .diagonal-cut {
-    clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0% 100%);
-  }
-
-  .diagonal-cut-reverse {
-    clip-path: polygon(0 0%, 100% 5%, 100% 100%, 0% 95%);
-  }
-
-  /* Card styles */
   .card-elevated {
     @apply bg-card rounded-3xl border border-border;
     box-shadow: var(--shadow-card);
   }
+  .card-coral { @apply bg-peach rounded-3xl border-none; }
+  .card-sky { @apply bg-sky rounded-3xl border-none; }
+  .card-mint { @apply bg-mint rounded-3xl border-none; }
+  .card-lavender { @apply bg-lavender rounded-3xl border-none; }
 
-  .card-coral {
-    @apply bg-peach rounded-3xl border-none;
-  }
-
-  .card-sky {
-    @apply bg-sky rounded-3xl border-none;
-  }
-
-  .card-mint {
-    @apply bg-mint rounded-3xl border-none;
-  }
-
-  .card-lavender {
-    @apply bg-lavender rounded-3xl border-none;
-  }
-
-  /* Text gradients */
   .text-gradient-coral {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(
-      135deg,
-      hsl(12 90% 62%),
-      hsl(340 80% 55%)
-    );
+    background-image: linear-gradient(135deg, hsl(12 90% 62%), hsl(340 80% 55%));
   }
-
   .text-gradient-ocean {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(
-      135deg,
-      hsl(220 85% 58%),
-      hsl(260 70% 60%)
-    );
+    background-image: linear-gradient(135deg, hsl(220 85% 58%), hsl(260 70% 60%));
   }
-
   .text-gradient-multi {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(
-      135deg,
-      hsl(12 90% 62%),
-      hsl(220 85% 58%),
-      hsl(75 70% 50%)
-    );
+    background-image: linear-gradient(135deg, hsl(12 90% 62%), hsl(220 85% 58%), hsl(75 70% 50%));
   }
 
-  /* Pill badge */
-  .pill-badge {
-    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold;
-  }
+  .pill-badge { @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold; }
+  .section-padding { @apply py-24 md:py-16 px-6 md:px-12 lg:px-20; }
+  .marquee-track { animation: marquee 30s linear infinite; }
+  .float-slow { animation: float-slow 8s ease-in-out infinite; }
+  .float-medium { animation: float-medium 6s ease-in-out infinite; }
+  .float-fast { animation: float-fast 4s ease-in-out infinite; }
+  .spin-slow { animation: spin-slow 20s linear infinite; }
 
-  /* Section spacing */
-  .section-padding {
-    @apply py-24 md:py-16 px-6 md:px-12 lg:px-20;
-  }
+  .glass { @apply bg-card/70 backdrop-blur-xl border border-border/50; }
+  .glow-primary { box-shadow: 0 0 30px hsl(var(--primary) / 0.3); }
+  .glow-ocean { box-shadow: 0 0 30px hsl(var(--ocean) / 0.3); }
 
-  /* Marquee */
-  .marquee-track {
-    animation: marquee 30s linear infinite;
+  .hover-underline { @apply relative; }
+  .hover-underline::after {
+    content: '';
+    @apply absolute left-0 -bottom-0.5 h-px w-0 bg-primary transition-all duration-300;
   }
-
-  /* Floating animation */
-  .float-slow {
-    animation: float-slow 8s ease-in-out infinite;
-  }
-
-  .float-medium {
-    animation: float-medium 6s ease-in-out infinite;
-  }
-
-  .float-fast {
-    animation: float-fast 4s ease-in-out infinite;
-  }
-
-  .spin-slow {
-    animation: spin-slow 20s linear infinite;
-  }
+  .hover-underline:hover::after { @apply w-full; }
 }
 
 @keyframes float-slow {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-25px) rotate(3deg);
-  }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(3deg); }
 }
-
 @keyframes float-medium {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-15px) rotate(-2deg);
-  }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-2deg); }
 }
-
 @keyframes float-fast {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
-
 @keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
-
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-
 @keyframes bounce-soft {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 @layer components {
-  .input-wrapper {
-    @apply relative w-full;
-  }
-
+  .input-wrapper { @apply relative w-full; }
   .input-field {
-    @apply w-full rounded-xl
-    bg-background/80 backdrop-blur
-    border border-border
-    px-4 pt-6 pb-2 text-sm
-    text-foreground
-    transition-all duration-300
-    focus:outline-none
-    focus:border-primary
-    focus:ring-2 focus:ring-primary/20;
+    @apply w-full rounded-xl bg-background/80 backdrop-blur border border-border
+    px-4 pt-6 pb-2 text-sm text-foreground transition-all duration-300
+    focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20;
   }
-
   .input-label {
-    @apply absolute left-4 top-2 text-xs
-    text-muted-foreground
-    transition-all duration-300
-    pointer-events-none;
+    @apply absolute left-4 top-2 text-xs text-muted-foreground
+    transition-all duration-300 pointer-events-none;
   }
-
   .input-field:focus + .input-label,
   .input-field:not(:placeholder-shown) + .input-label {
     @apply text-primary scale-90 -translate-y-1;
   }
-
-  .input-icon {
-    @apply absolute right-4 top-5 text-muted-foreground;
-  }
+  .input-icon { @apply absolute right-4 top-5 text-muted-foreground; }
 }

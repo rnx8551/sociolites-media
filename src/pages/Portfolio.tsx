@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollProgress from "@/components/ScrollProgress";
 import { ArrowRight, ExternalLink, CheckCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -11,6 +14,9 @@ const fadeUp = {
 };
 
 const Portfolio = () => {
+  useEffect(() => {
+    document.title = "Portfolio | Sociolites — Case Studies & Results";
+  }, []);
   const projects = [
     {
       id: 1,
@@ -92,6 +98,7 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <ScrollProgress />
       <Navbar />
       <main>
         {/* HERO */}
@@ -278,6 +285,7 @@ const Portfolio = () => {
         </section>
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

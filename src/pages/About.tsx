@@ -1,12 +1,15 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Users, Target, Zap, Award } from "lucide-react";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const isMobile =
-  typeof window !== "undefined" && window.innerWidth < 768;
+import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const About = () => {
+  const prefersReducedMotion = useReducedMotion();
+  const animY = prefersReducedMotion ? 0 : 30;
+  const animYSm = prefersReducedMotion ? 0 : 10;
   const values = [
     {
       icon: Target,
@@ -51,8 +54,13 @@ const About = () => {
     },
   ];
 
+  useEffect(() => {
+    document.title = "About Us | Sociolites — Our Story & Team";
+  }, []);
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <ScrollProgress />
       <Navbar />
 
       {/* SEO Schema */}
@@ -63,7 +71,7 @@ const About = () => {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "Sociolites",
-            foundingDate: "2018",
+            foundingDate: "2024",
             description:
               "Performance-driven digital marketing agency helping brands scale visibility, trust, and revenue.",
             url: "https://sociolites.com",
@@ -78,7 +86,7 @@ const About = () => {
 
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, y: isMobile ? 10 : 30 }}
+              initial={{ opacity: 0, y: animY }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="mb-6"
@@ -90,7 +98,7 @@ const About = () => {
 
             {/* Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: isMobile ? 10 : 30 }}
+              initial={{ opacity: 0, y: animY }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-5xl sm:text-6xl font-display font-extrabold leading-tight mb-6"
@@ -132,7 +140,7 @@ const About = () => {
               ].map((card, i) => (
                 <motion.div
                   key={card.tag}
-                  initial={{ opacity: 0, y: isMobile ? 10 : 30 }}
+                  initial={{ opacity: 0, y: animY }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.3 + i * 0.1 }}
                   className="card-elevated p-7 border-t-2 border-t-coral rounded-2xl relative overflow-hidden"
@@ -160,7 +168,7 @@ const About = () => {
 
             {/* Vision 2028 Strip */}
             <motion.div
-              initial={{ opacity: 0, y: isMobile ? 10 : 20 }}
+              initial={{ opacity: 0, y: animYSm }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="rounded-2xl p-10 flex items-center gap-8 flex-wrap"
@@ -247,7 +255,7 @@ const About = () => {
                 return (
                   <motion.div
                     key={value.title}
-                    initial={{ opacity: 0, y: isMobile ? 10 : 30 }}
+                    initial={{ opacity: 0, y: animY }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -324,6 +332,7 @@ const About = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
