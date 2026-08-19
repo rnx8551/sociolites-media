@@ -46,7 +46,7 @@ const industries = [
     name: "Resorts & Hospitality",
     icon: Hotel,
     pill: "🏨 Hospitality",
-    proof: "Bliss International Resort",
+    proof: "Bliss International Resort, Rajnandgaon",
     result: "+180% Direct Bookings",
     roas: "4.8X ROAS",
     highlight: "Staycation & Wedding Leads",

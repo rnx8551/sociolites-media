@@ -399,8 +399,10 @@ const Services = () => {
                 {/* IMAGE */}
                 <div className="absolute inset-0">
                   <img
-                    src={`${item.img}?auto=format&fit=crop&w=800&q=80`}
+                    src={`${item.img}?auto=format&fit=crop&w=600&q=75`}
                     alt={item.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />

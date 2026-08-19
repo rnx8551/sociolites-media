@@ -95,7 +95,6 @@ const ServicesSection = () => {
       className="relative section-padding overflow-hidden"
     >
       {/* Background accents */}
-      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none" />
       <div className="absolute -top-24 -left-24 w-80 h-80 bg-peach blob-shape opacity-40 blur-2xl" />
       <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-sky blob-shape-2 opacity-30 blur-2xl" />
 

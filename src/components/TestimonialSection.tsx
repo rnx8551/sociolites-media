@@ -32,7 +32,7 @@ const testimonials = [
   },
   {
     name: "Bliss International Resort",
-    role: "Luxury Resort & Event Destination, Gondia",
+    role: "Luxury Resort & Event Destination, Rajnandgaon",
     image: "bg-gradient-to-br from-lavender to-purple-500",
     initial: "BR",
     quote:

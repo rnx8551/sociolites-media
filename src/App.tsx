@@ -7,8 +7,10 @@ import { useEffect, lazy, Suspense } from "react";
 import { ThemeProvider } from "next-themes";
 import { TimeBasedThemeSync, getTimeBasedTheme } from "@/components/TimeBasedThemeSync";
 
-// Lazy load all pages for code splitting
-const Index = lazy(() => import("./pages/Index"));
+// Direct import for instantaneous homepage rendering
+import Index from "./pages/Index";
+
+// Lazy load secondary pages for optimal code splitting
 const Services = lazy(() => import("./pages/Services"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const About = lazy(() => import("./pages/About"));
