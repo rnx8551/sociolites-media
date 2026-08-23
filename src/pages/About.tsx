@@ -42,15 +42,43 @@ const About = () => {
       name: "Akanksha Shrivastava",
       role: "CEO & Founder",
       exp: "10+ years in growth & branding",
-      image:
-        "/akanksha-profile.jpg",
+      image: "/akku.jpeg",
+      gradient: "",
     },
     {
       name: "Arbaz Khan",
       role: "Co-Founder & Graphics Lead",
       exp: "8+ years in Graphics Designing & organic scale",
-      image:
-        "/arbaz-profile.jpg",
+      image: "/arbaz-profile.jpg",
+      gradient: "",
+    },
+    {
+      name: "Manish Bopche",
+      role: "Photographer",
+      exp: "Visual storytelling & brand shoots",
+      image: "",
+      gradient: "from-amber-500 to-orange-600",
+    },
+    {
+      name: "Ruturaj Sakunde",
+      role: "Video Editor",
+      exp: "Post-production & motion graphics",
+      image: "",
+      gradient: "from-violet-500 to-purple-600",
+    },
+    {
+      name: "Gunjan",
+      role: "Graphic Designer",
+      exp: "Brand identity & creative design",
+      image: "",
+      gradient: "from-pink-500 to-rose-600",
+    },
+    {
+      name: "Vanshika Agarwal",
+      role: "Social Media Manager",
+      exp: "Content strategy & community growth",
+      image: "",
+      gradient: "from-cyan-500 to-blue-600",
     },
   ];
 
@@ -291,19 +319,29 @@ const About = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
               {team.map((member) => (
                 <div key={member.name} className="text-center">
                   <div className="rounded-2xl overflow-hidden mb-4 shadow-md">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      loading="lazy"
-                      decoding="async"
-                      width={600}
-                      height={400}
-                      className="w-full h-56 object-cover"
-                    />
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        loading="lazy"
+                        decoding="async"
+                        width={600}
+                        height={400}
+                        className="w-full h-56 object-cover"
+                      />
+                    ) : (
+                      <div
+                        className={`w-full h-56 bg-gradient-to-br ${member.gradient} flex items-center justify-center`}
+                      >
+                        <span className="text-5xl font-display font-extrabold text-white/90">
+                          {member.name.split(" ").map((n) => n[0]).join("")}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <h3 className="font-display font-bold">{member.name}</h3>
                   <p className="text-muted-foreground">{member.role}</p>
