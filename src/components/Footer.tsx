@@ -62,16 +62,13 @@ const Footer = () => {
 
             {/* Brand */}
             <div className="md:col-span-4">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="relative w-12 h-12">
-                  <div className="absolute inset-0 bg-primary blob-shape blur-lg opacity-70" />
-                  <span className="absolute inset-0 flex items-center justify-center text-primary-foreground font-display font-extrabold text-xl">
-                    S
-                  </span>
-                </div>
-                <span className="font-display font-bold text-2xl text-foreground tracking-tight">
-                  Sociolites
-                </span>
+              <div className="flex items-center mb-5">
+                <img
+                  src="/logo-sociolites.png"
+                  alt="Sociolites"
+                  className="h-16 w-auto object-contain dark:brightness-0 dark:invert"
+                  draggable={false}
+                />
               </div>
 
               <p className="text-muted-foreground/90 max-w-xs leading-relaxed text-sm">

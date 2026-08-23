@@ -72,23 +72,19 @@ const Navbar = () => {
       aria-label="Main navigation"
     >
       <div
-        className={`max-w-6xl mx-auto rounded-full px-6 py-3 flex items-center justify-between transition-all duration-500 ${
-          scrolled
-            ? "bg-card/90 backdrop-blur-xl shadow-[var(--shadow-elevated)] border border-border"
-            : "bg-transparent"
-        }`}
+        className={`max-w-6xl mx-auto rounded-full px-6 py-3 flex items-center justify-between transition-all duration-500 ${scrolled
+          ? "bg-card/90 backdrop-blur-xl shadow-[var(--shadow-elevated)] border border-border"
+          : "bg-transparent"
+          }`}
       >
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5" aria-label="Sociolites home">
-          <div className="relative w-10 h-10">
-            <div className="absolute inset-0 bg-primary blob-shape" />
-            <span className="absolute inset-0 flex items-center justify-center text-primary-foreground font-display font-extrabold text-lg">
-              S
-            </span>
-          </div>
-          <span className="font-display font-bold text-xl text-foreground tracking-tight">
-            Sociolites
-          </span>
+        <Link to="/" className="flex items-center" aria-label="Sociolites home">
+          <img
+            src="/logo-sociolites.png"
+            alt="Sociolites"
+            className="h-14 w-auto object-contain dark:brightness-0 dark:invert"
+            draggable={false}
+          />
         </Link>
 
         {/* Desktop Links */}
@@ -97,11 +93,10 @@ const Navbar = () => {
             <Link
               key={link.label}
               to={link.href}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                isActive(link.href)
-                  ? "text-foreground bg-card shadow-sm"
-                  : "text-muted-foreground hover:text-foreground hover:bg-card"
-              }`}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${isActive(link.href)
+                ? "text-foreground bg-card shadow-sm"
+                : "text-muted-foreground hover:text-foreground hover:bg-card"
+                }`}
             >
               {link.label}
             </Link>
@@ -153,11 +148,10 @@ const Navbar = () => {
                 >
                   <Link
                     to={link.href}
-                    className={`block px-4 py-3 rounded-2xl font-semibold text-base transition-colors ${
-                      isActive(link.href)
-                        ? "bg-peach text-coral"
-                        : "text-foreground hover:bg-muted"
-                    }`}
+                    className={`block px-4 py-3 rounded-2xl font-semibold text-base transition-colors ${isActive(link.href)
+                      ? "bg-peach text-coral"
+                      : "text-foreground hover:bg-muted"
+                      }`}
                   >
                     {link.label}
                   </Link>
