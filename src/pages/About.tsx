@@ -331,11 +331,11 @@ const About = () => {
                         decoding="async"
                         width={600}
                         height={400}
-                        className="w-full h-56 object-cover"
+                        className="w-full h-72 object-cover"
                       />
                     ) : (
                       <div
-                        className={`w-full h-56 bg-gradient-to-br ${member.gradient} flex items-center justify-center`}
+                        className={`w-full h-72 bg-gradient-to-br ${member.gradient} flex items-center justify-center`}
                       >
                         <span className="text-5xl font-display font-extrabold text-white/90">
                           {member.name.split(" ").map((n) => n[0]).join("")}
