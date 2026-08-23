@@ -42,7 +42,7 @@ const About = () => {
       name: "Akanksha Shrivastava",
       role: "CEO & Founder",
       exp: "10+ years in growth & branding",
-      image: "/akku.jpeg",
+      image: "/akku-original.jpeg",
       gradient: "",
     },
     {
