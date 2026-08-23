@@ -82,7 +82,7 @@ const Navbar = () => {
           <img
             src="/logo-sociolites.png"
             alt="Sociolites"
-            className="h-14 w-auto object-contain dark:brightness-0 dark:invert"
+            className="h-8 w-auto object-contain dark:brightness-0 dark:invert"
             draggable={false}
           />
         </Link>

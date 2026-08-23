@@ -66,7 +66,7 @@ const Footer = () => {
                 <img
                   src="/logo-sociolites.png"
                   alt="Sociolites"
-                  className="h-16 w-auto object-contain dark:brightness-0 dark:invert"
+                  className="h-12 w-auto object-contain dark:brightness-0 dark:invert"
                   draggable={false}
                 />
               </div>
