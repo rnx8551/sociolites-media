@@ -43,14 +43,14 @@ const About = () => {
       role: "CEO & Founder",
       exp: "10+ years in growth & branding",
       image:
-        "/akanksha-profile.png",
+        "/akanksha-profile.jpg",
     },
     {
       name: "Arbaz Khan",
       role: "Co-Founder & Graphics Lead",
       exp: "8+ years in Graphics Designing & organic scale",
       image:
-        "/arbaz-profile.png",
+        "/arbaz-profile.jpg",
     },
   ];
 
@@ -298,6 +298,10 @@ const About = () => {
                     <img
                       src={member.image}
                       alt={member.name}
+                      loading="lazy"
+                      decoding="async"
+                      width={600}
+                      height={400}
                       className="w-full h-56 object-cover"
                     />
                   </div>
