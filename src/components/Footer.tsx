@@ -77,8 +77,8 @@ const Footer = () => {
               </p>
 
               <div className="flex flex-col gap-2 mt-4 text-sm text-muted-foreground">
-                <a href="mailto:ashrivastava201819@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
-                  <Mail size={13} /> ashrivastava201819@gmail.com
+                <a href="mailto:thesociolites@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <Mail size={13} /> thesociolites@gmail.com
                 </a>
                 <a href="tel:+917020698446" className="flex items-center gap-2 hover:text-primary transition-colors">
                   <Phone size={13} /> +91 70206 98446
@@ -160,7 +160,7 @@ const Footer = () => {
                   e.preventDefault();
                   const input = (e.target as HTMLFormElement).querySelector('input') as HTMLInputElement;
                   if (input.value) {
-                    window.location.href = `mailto:ashrivastava201819@gmail.com?subject=Newsletter Signup&body=Please subscribe me: ${input.value}`;
+                    window.location.href = `mailto:thesociolites@gmail.com?subject=Newsletter Signup&body=Please subscribe me: ${input.value}`;
                   }
                 }}
                 className="flex gap-2"

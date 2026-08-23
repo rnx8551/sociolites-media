@@ -53,11 +53,11 @@ const About = () => {
       gradient: "",
     },
     {
-      name: "Manish Bopche",
-      role: "Photographer",
-      exp: "Visual storytelling & brand shoots",
-      image: "",
-      gradient: "from-amber-500 to-orange-600",
+      name: "Vanshika Agarwal",
+      role: "Social Media Manager",
+      exp: "Content strategy & community growth",
+      image: "/vanshika-agrawal.jpeg",
+      gradient: "from-cyan-500 to-blue-600",
     },
     {
       name: "Ruturaj Sakunde",
@@ -67,18 +67,25 @@ const About = () => {
       gradient: "from-violet-500 to-purple-600",
     },
     {
+      name: "Manish Bopche",
+      role: "Photographer",
+      exp: "Visual storytelling & brand shoots",
+      image: "/manish-bopche.png",
+      gradient: "from-amber-500 to-orange-600",
+    },
+    {
+      name: "Ankita Shrivastava",
+      role: "Web Developer",
+      exp: "Full-stack development & modern web experiences",
+      image: "/ankita-shrivastava.jpeg",
+      gradient: "from-teal-500 to-emerald-600",
+    },
+    {
       name: "Gunjan",
       role: "Graphic Designer",
       exp: "Brand identity & creative design",
       image: "",
       gradient: "from-pink-500 to-rose-600",
-    },
-    {
-      name: "Vanshika Agarwal",
-      role: "Social Media Manager",
-      exp: "Content strategy & community growth",
-      image: "",
-      gradient: "from-cyan-500 to-blue-600",
     },
   ];
 

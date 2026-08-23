@@ -73,7 +73,7 @@ const Privacy = () => {
                 <div>
                   <h2 className="text-2xl font-display font-bold mb-4">4. Your Rights</h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    You have the right to access, correct, or delete your personal data at any time. Contact us at ashrivastava201819@gmail.com to exercise these rights.
+                    You have the right to access, correct, or delete your personal data at any time. Contact us at thesociolites@gmail.com to exercise these rights.
                   </p>
                 </div>
               </>
@@ -137,10 +137,10 @@ const Privacy = () => {
                 For any questions about this policy, please reach out:
               </p>
               <a
-                href="mailto:ashrivastava201819@gmail.com"
+                href="mailto:thesociolites@gmail.com"
                 className="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
               >
-                <Mail size={16} /> ashrivastava201819@gmail.com
+                <Mail size={16} /> thesociolites@gmail.com
               </a>
             </div>
           </motion.div>

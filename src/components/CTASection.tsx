@@ -90,7 +90,7 @@ const CTASection = () => {
           {/* Contact info pills */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             {[
-              { icon: Mail, text: "ashrivastava201819@gmail.com" },
+              { icon: Mail, text: "thesociolites@gmail.com" },
               { icon: Phone, text: "+91 7020698446" },
               { icon: MapPin, text: "Gondia, Maharastra, India" },
             ].map((item) => (

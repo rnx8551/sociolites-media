@@ -43,7 +43,7 @@ const Contact = () => {
     const body = `Brand / Startup: ${formData.brand}\nGoal: ${formData.goal}\n\nBiggest Challenge:\n${formData.challenge}`;
     // Open mailto in new tab so user stays on page
     window.open(
-      `mailto:ashrivastava201819@gmail.com?subject=New Strategy Inquiry&body=${encodeURIComponent(body)}`,
+      `mailto:thesociolites@gmail.com?subject=New Strategy Inquiry&body=${encodeURIComponent(body)}`,
       "_blank"
     );
     setTimeout(() => {
@@ -244,13 +244,13 @@ const Contact = () => {
 
           {/* Email */}
           <a
-            href="mailto:ashrivastava201819@gmail.com"
+            href="mailto:thesociolites@gmail.com"
             className="card-elevated p-6 rounded-2xl hover:shadow-lg transition"
           >
             <Mail className="text-coral mb-3" />
             <p className="font-semibold">Email</p>
             <p className="text-sm text-muted-foreground">
-              ashrivastava201819@gmail.com
+              thesociolites@gmail.com
             </p>
           </a>
 
