@@ -1,27 +1,20 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ScrollProgress from "@/components/ScrollProgress";
+import MarqueeSection from "@/components/MarqueeSection";
+import ServicesSection from "@/components/ServicesSection";
+import ApproachSection from "@/components/ApproachSection";
+import WhyChooseUsSection from "@/components/WhyChooseUsSection";
+import IndustriesSection from "@/components/IndustriesSection";
+import PricingSection from "@/components/PricingSection";
+import PortfolioSection from "@/components/PortfolioSection";
+import FAQSection from "@/components/FAQSection";
+import TestimonialSection from "@/components/TestimonialSection";
+import StatsSection from "@/components/StatsSection";
+import CTASection from "@/components/CTASection";
+import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-
-// Lazy load all below-the-fold sections for faster initial paint
-const MarqueeSection = lazy(() => import("@/components/MarqueeSection"));
-const ServicesSection = lazy(() => import("@/components/ServicesSection"));
-const ApproachSection = lazy(() => import("@/components/ApproachSection"));
-const WhyChooseUsSection = lazy(() => import("@/components/WhyChooseUsSection"));
-const IndustriesSection = lazy(() => import("@/components/IndustriesSection"));
-const PricingSection = lazy(() => import("@/components/PricingSection"));
-const PortfolioSection = lazy(() => import("@/components/PortfolioSection"));
-const FAQSection = lazy(() => import("@/components/FAQSection"));
-const TestimonialSection = lazy(() => import("@/components/TestimonialSection"));
-const StatsSection = lazy(() => import("@/components/StatsSection"));
-const CTASection = lazy(() => import("@/components/CTASection"));
-const Footer = lazy(() => import("@/components/Footer"));
-
-// Minimal inline fallback — no layout shift, no spinners
-const SectionFallback = () => (
-  <div className="w-full py-24" aria-hidden="true" />
-);
+import ScrollProgress from "@/components/ScrollProgress";
 
 const Index = () => {
   useEffect(() => {
@@ -34,23 +27,19 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <Suspense fallback={<SectionFallback />}>
-          <MarqueeSection />
-          <ServicesSection />
-          <ApproachSection />
-          <WhyChooseUsSection />
-          <IndustriesSection />
-          <PricingSection />
-          <PortfolioSection />
-          <FAQSection />
-          <TestimonialSection />
-          <StatsSection />
-          <CTASection />
-        </Suspense>
+        <MarqueeSection />
+        <ServicesSection />
+        <ApproachSection />
+        <WhyChooseUsSection />
+        <IndustriesSection />
+        <PricingSection />
+        <PortfolioSection />
+        <FAQSection />
+        <TestimonialSection />
+        <StatsSection />
+        <CTASection />
       </main>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+      <Footer />
       <WhatsAppButton />
     </div>
   );
