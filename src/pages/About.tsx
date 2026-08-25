@@ -56,7 +56,7 @@ const About = () => {
       name: "Vanshika Agarwal",
       role: "Social Media Manager",
       exp: "Content strategy & community growth",
-      image: "/vanshika-agrawal.jpeg",
+      image: "/vanshika-agrawal2.jpeg",
       gradient: "from-cyan-500 to-blue-600",
     },
     {
